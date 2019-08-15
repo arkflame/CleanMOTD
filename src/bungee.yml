@@ -1,0 +1,5 @@
+name: BungeeMOTD
+version: 0.0.9
+main: twolovers.bungeemotd.bungee.Main
+description: MOTD plugin for BungeeCord
+author: 2LS
