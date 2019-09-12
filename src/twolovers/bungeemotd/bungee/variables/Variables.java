@@ -4,18 +4,12 @@ import net.md_5.bungee.config.Configuration;
 import twolovers.bungeemotd.bungee.utils.ConfigurationUtil;
 
 import java.util.List;
-import java.util.Random;
 
 public class Variables {
 	private final ConfigurationUtil configurationUtil;
-	private final Random randomizer = new Random();
-	private boolean motdEnabled;
 	private List<String> motdMotds;
-	private boolean maxPlayersEnabled;
-	private int maxPlayersMaxPlayers;
-	private boolean maxPlayersJustOneMore;
-	private boolean fakePlayersEnabled;
-	private int fakePlayersAmount;
+	private int maxPlayers, fakePlayersAmount;
+	private boolean motdEnabled, maxPlayersJustOneMore, maxPlayersEnabled, fakePlayersEnabled;
 	private String fakePlayersMode;
 
 	public Variables(ConfigurationUtil configurationUtil) {
@@ -29,7 +23,7 @@ public class Variables {
 		motdEnabled = configuration.getBoolean("motd.enabled");
 		motdMotds = configuration.getStringList("motd.motds");
 		maxPlayersEnabled = configuration.getBoolean("maxplayers.enabled");
-		maxPlayersMaxPlayers = configuration.getInt("maxplayers.maxplayers");
+		maxPlayers = configuration.getInt("maxplayers.maxplayers");
 		maxPlayersJustOneMore = configuration.getBoolean("maxplayers.justonemore");
 		fakePlayersEnabled = configuration.getBoolean("fakeplayers.enabled");
 		fakePlayersAmount = configuration.getInt("fakeplayers.amount");
@@ -41,7 +35,7 @@ public class Variables {
 	}
 
 	public String getMOTD(int maxPlayers, int onlinePlayers) {
-		return motdMotds.get(randomizer.nextInt(motdMotds.size()))
+		return motdMotds.get((int) (Math.floor(Math.random() * motdMotds.size())))
 				.replace("&", "\u00A7")
 				.replace("%newline%", "\n")
 				.replace("%maxplayers%", String.valueOf(maxPlayers))
@@ -52,8 +46,8 @@ public class Variables {
 		return maxPlayersEnabled;
 	}
 
-	public int getMaxPlayersMaxPlayers() {
-		return maxPlayersMaxPlayers;
+	public int getMaxPlayers() {
+		return maxPlayers;
 	}
 
 	public boolean isMaxPlayersJustOneMore() {
