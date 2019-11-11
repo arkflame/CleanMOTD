@@ -1,8 +1,8 @@
 messages:
   usage: |-
-    &aBungeeMOTD commands:
-    &e/bungeemotd reload &8| &bReloads the plugin!
+    &aCleanMotD commands:
+    &e/cleanmotd reload &7- &bReloads the plugin!
 
-  reload: "&aPlugin BungeeMOTD reloaded!"
-  unknowncommand: "&cUnknown command. Use /bungeemotd help to see available twolovers.chatcore.commands!"
+  reload: "&aPlugin CleanMotD reloaded!"
+  unknowncommand: "&cUnknown command. Use /cleanmotd help to see available commands!"
   nopermission: "&cYou dont have permission to use this command!"

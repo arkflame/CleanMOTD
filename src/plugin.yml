@@ -1,0 +1,8 @@
+name: CleanMotD
+version: 0.2.1
+main: twolovers.cleanmotd.bukkit.Main
+description: Simple MotD managing plugin.
+author: 2LS
+commands:
+  cleanmotd:
+    description: "Main CleanMotD command."
