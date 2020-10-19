@@ -18,7 +18,7 @@ public class ProxyPingListener implements Listener {
 	public void onProxyPing(final ProxyPingEvent event) {
 		final ServerPing response = event.getResponse();
 
-		if (response != null) {
+		if (response != null || event instanceof Cancellable && ((Cancellable) !event).isCancelled()) {
 			final ServerPing.Players players = response.getPlayers();
 			int onlinePlayers = players.getOnline();
 			int maxPlayers = players.getMax();
