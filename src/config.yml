@@ -3,11 +3,13 @@ motd:
   enabled: true
 
   # Placeholders: %onlineplayers% %maxplayers%
-  # Use %newline% to separate lines.
   motds:
-    - "&a&lWelcome to CleanMotD server!&r%newline%&b&lThere are %onlineplayers% players online!"
-    - "&e&lThis is the first line!%newline%&c&lThis is the second line!"
-    - "&d&lYou can set%newline%&5&lMultiple motds"
+    - |- 
+        &b&lCleanMoTD &f&lDefault &b&lMoTD
+        &7There are &a%onlineplayers%&7 players online!
+    - |-
+        &aCleanMoTD Default MoTD &c[Optimized]
+        &d&lCome and enojoy our brand new games!
 
 # Caches requests to only send favicon to the first ping packet of a player.
 # This can prevent crashes with bot attacks and improves performance.

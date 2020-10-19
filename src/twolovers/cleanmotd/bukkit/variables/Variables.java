@@ -1,5 +1,6 @@
 package twolovers.cleanmotd.bukkit.variables;
 
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.Configuration;
 import twolovers.cleanmotd.bukkit.utils.ConfigurationUtil;
 
@@ -39,11 +40,10 @@ public class Variables {
 	}
 
 	public String getMOTD(final int maxPlayers, final int onlinePlayers) {
-		return motdMotds[(int) (Math.floor(Math.random() * motdMotds.length))]
-				.replace("&", "\u00A7")
-				.replace("%newline%", "\n")
-				.replace("%maxplayers%", String.valueOf(maxPlayers))
-				.replace("%onlineplayers%", String.valueOf(onlinePlayers));
+		return ChatColor.translateAlternateColorCodes('&',
+				motdMotds[(int) (Math.floor(Math.random() * motdMotds.length))]
+						.replace("%maxplayers%", String.valueOf(maxPlayers))
+						.replace("%onlineplayers%", String.valueOf(onlinePlayers).replace("%newline%", "\n")));
 	}
 
 	public boolean isCacheEnabled() {

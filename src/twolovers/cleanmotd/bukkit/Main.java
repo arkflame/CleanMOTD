@@ -22,7 +22,7 @@ public class Main extends JavaPlugin {
 		final PluginManager pluginManager = server.getPluginManager();
 
 		pluginManager.registerEvents(new ServerListPingListener(variables), this);
-		server.getPluginCommand("cleanmotd").setExecutor(new CleanMotDCommand(variables, messages));
+		getCommand("cleanmotd").setExecutor(new CleanMotDCommand(variables, messages));
 
 		server.getScheduler().runTaskTimer(this, variables::clearPinged, variables.getCacheTime(), variables.getCacheTime());
 	}

@@ -1,5 +1,6 @@
 package twolovers.cleanmotd.bungee.variables;
 
+import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.config.Configuration;
 import twolovers.cleanmotd.bungee.utils.ConfigurationUtil;
 
@@ -32,6 +33,19 @@ public class Variables {
 		fakePlayersEnabled = configuration.getBoolean("fakeplayers.enabled");
 		fakePlayersAmount = configuration.getInt("fakeplayers.amount");
 		fakePlayersMode = configuration.getString("fakeplayers.mode");
+
+		for (int i = 0; i < motdMotds.length; i++) {
+			final String motd = motdMotds[i];
+
+			if (motd.contains("%centered%")) {
+				motdMotds[i] = replaceCentered(motd.replace("%centered%", ""));
+			}
+		}
+	}
+
+	// TODO: Do something!
+	private String replaceCentered(final String string) {
+		return string;
 	}
 
 	public boolean isMotdEnabled() {
@@ -39,11 +53,10 @@ public class Variables {
 	}
 
 	public String getMOTD(final int maxPlayers, final int onlinePlayers) {
-		return motdMotds[(int) (Math.floor(Math.random() * motdMotds.length))]
-				.replace("&", "\u00A7")
-				.replace("%newline%", "\n")
-				.replace("%maxplayers%", String.valueOf(maxPlayers))
-				.replace("%onlineplayers%", String.valueOf(onlinePlayers));
+		return ChatColor.translateAlternateColorCodes('&',
+				motdMotds[(int) (Math.floor(Math.random() * motdMotds.length))]
+						.replace("%maxplayers%", String.valueOf(maxPlayers))
+						.replace("%onlineplayers%", String.valueOf(onlinePlayers)).replace("%newline%", "\n"));
 	}
 
 	public boolean isCacheEnabled() {

@@ -7,7 +7,7 @@ import org.bukkit.event.server.ServerListPingEvent;
 import twolovers.cleanmotd.bukkit.variables.Variables;
 
 public class ServerListPingListener implements Listener {
-	private Variables variables;
+	private final Variables variables;
 
 	public ServerListPingListener(final Variables variables) {
 		this.variables = variables;
@@ -15,24 +15,26 @@ public class ServerListPingListener implements Listener {
 
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void onServerListPing(final ServerListPingEvent event) {
-		// Theres no method to get the player name on Spigot.
-		final String name = "";
-		int onlinePlayers = event.getNumPlayers();
+		// WARNING!!!
+		// There is no way to get player name on Bukkit.
+		// There is no way to set player count on Bukkit.
+		// Bukkit already has cache for Favicon.
+
+		final int onlinePlayers = event.getNumPlayers();
 		int maxPlayers = event.getMaxPlayers();
 
-		// Theres no method yet to change player num on ping event.
-			/*if (variables.isFakePlayersEnabled())
-				onlinePlayers = onlinePlayers + variables.getFakePlayersAmount(onlinePlayers);*/
-
-		if (variables.isMaxPlayersEnabled())
-			if (variables.isMaxPlayersJustOneMore())
+		if (variables.isMaxPlayersEnabled()) {
+			if (variables.isMaxPlayersJustOneMore()) {
 				maxPlayers = onlinePlayers + 1;
-			else
+			} else {
 				maxPlayers = variables.getMaxPlayers();
+			}
 
-		if (variables.isMotdEnabled())
+			event.setMaxPlayers(maxPlayers);
+		}
+
+		if (variables.isMotdEnabled()) {
 			event.setMotd(variables.getMOTD(maxPlayers, onlinePlayers));
-
-		event.setMaxPlayers(maxPlayers);
+		}
 	}
 }
