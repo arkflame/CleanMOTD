@@ -1,15 +1,16 @@
-package twolovers.cleanmotd.bungee;
+package dev._2lstudios.cleanmotd.bungee;
 
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.api.plugin.PluginManager;
-import twolovers.cleanmotd.bungee.commands.CleanMotDCommand;
-import twolovers.cleanmotd.bungee.listeners.ProxyPingListener;
-import twolovers.cleanmotd.bungee.utils.ConfigurationUtil;
-import twolovers.cleanmotd.bungee.variables.Messages;
-import twolovers.cleanmotd.bungee.variables.Variables;
 
 import java.util.concurrent.TimeUnit;
+
+import dev._2lstudios.cleanmotd.bungee.commands.CleanMotDCommand;
+import dev._2lstudios.cleanmotd.bungee.listeners.ProxyPingListener;
+import dev._2lstudios.cleanmotd.bungee.utils.ConfigurationUtil;
+import dev._2lstudios.cleanmotd.bungee.variables.Messages;
+import dev._2lstudios.cleanmotd.bungee.variables.Variables;
 
 public class Main extends Plugin {
 	public void onEnable() {

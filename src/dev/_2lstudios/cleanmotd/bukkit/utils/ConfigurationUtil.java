@@ -1,9 +1,7 @@
-package twolovers.cleanmotd.bungee.utils;
+package dev._2lstudios.cleanmotd.bukkit.utils;
 
-import net.md_5.bungee.api.plugin.Plugin;
-import net.md_5.bungee.config.Configuration;
-import net.md_5.bungee.config.ConfigurationProvider;
-import net.md_5.bungee.config.YamlConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.Plugin;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,17 +15,13 @@ public class ConfigurationUtil {
 		this.plugin = plugin;
 	}
 
-	public Configuration getConfiguration(String file) {
+	public YamlConfiguration getConfiguration(String filePath) {
 		final File dataFolder = plugin.getDataFolder();
+		final File file = new File(filePath.replace("%datafolder%", dataFolder.toPath().toString()));
 
-		file = file.replace("%datafolder%", dataFolder.toPath().toString());
-
-		try {
-			return ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(file));
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
+		if (file.exists())
+			return YamlConfiguration.loadConfiguration(file);
+		else return new YamlConfiguration();
 	}
 
 	public void createConfiguration(String file) {
@@ -55,12 +49,12 @@ public class ConfigurationUtil {
 		}
 	}
 
-	public void saveConfiguration(final Configuration configuration, final String file) {
-		plugin.getProxy().getScheduler().runAsync(plugin, () -> {
+	public void saveConfiguration(final YamlConfiguration yamlConfiguration, final String file) {
+		plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> {
 			try {
 				final File dataFolder = plugin.getDataFolder();
 
-				ConfigurationProvider.getProvider(YamlConfiguration.class).save(configuration, new File(file.replace("%datafolder%", dataFolder.toPath().toString())));
+				yamlConfiguration.save(file.replace("%datafolder%", dataFolder.toPath().toString()));
 			} catch (final IOException e) {
 				System.out.print(("[%pluginname%] Unable to save configuration file!").replace("%pluginname%", plugin.getDescription().getName()));
 			}
@@ -68,7 +62,7 @@ public class ConfigurationUtil {
 	}
 
 	public void deleteConfiguration(final String file) {
-		plugin.getProxy().getScheduler().runAsync(plugin, () -> {
+		plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> {
 			final File file1 = new File(file);
 
 			if (file1.exists()) file1.delete();

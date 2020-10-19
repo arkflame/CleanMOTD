@@ -1,12 +1,12 @@
-package twolovers.cleanmotd.bungee.listeners;
+package dev._2lstudios.cleanmotd.bungee.listeners;
 
+import dev._2lstudios.cleanmotd.bungee.variables.Variables;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
-import twolovers.cleanmotd.bungee.variables.Variables;
 
 public class ProxyPingListener implements Listener {
 	private final Variables variables;

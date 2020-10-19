@@ -1,10 +1,10 @@
-package twolovers.cleanmotd.bungee.commands;
+package dev._2lstudios.cleanmotd.bungee.commands;
 
+import dev._2lstudios.cleanmotd.bungee.variables.Messages;
+import dev._2lstudios.cleanmotd.bungee.variables.Variables;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.plugin.Command;
-import twolovers.cleanmotd.bungee.variables.Messages;
-import twolovers.cleanmotd.bungee.variables.Variables;
 
 public class CleanMotDCommand extends Command {
 	private final Variables variables;

@@ -1,8 +1,8 @@
-package twolovers.cleanmotd.bukkit.variables;
+package dev._2lstudios.cleanmotd.bungee.variables;
 
-import org.bukkit.ChatColor;
-import org.bukkit.configuration.Configuration;
-import twolovers.cleanmotd.bukkit.utils.ConfigurationUtil;
+import dev._2lstudios.cleanmotd.bungee.utils.ConfigurationUtil;
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.config.Configuration;
 
 public class Messages {
 	private final ConfigurationUtil configurationUtil;

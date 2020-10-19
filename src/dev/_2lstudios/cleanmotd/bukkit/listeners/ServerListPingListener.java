@@ -1,10 +1,11 @@
-package twolovers.cleanmotd.bukkit.listeners;
+package dev._2lstudios.cleanmotd.bukkit.listeners;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerListPingEvent;
-import twolovers.cleanmotd.bukkit.variables.Variables;
+
+import dev._2lstudios.cleanmotd.bukkit.variables.Variables;
 
 public class ServerListPingListener implements Listener {
 	private final Variables variables;

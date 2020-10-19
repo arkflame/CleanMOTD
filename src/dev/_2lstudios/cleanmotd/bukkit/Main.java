@@ -1,13 +1,14 @@
-package twolovers.cleanmotd.bukkit;
+package dev._2lstudios.cleanmotd.bukkit;
 
 import org.bukkit.Server;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import twolovers.cleanmotd.bukkit.commands.CleanMotDCommand;
-import twolovers.cleanmotd.bukkit.listeners.ServerListPingListener;
-import twolovers.cleanmotd.bukkit.utils.ConfigurationUtil;
-import twolovers.cleanmotd.bukkit.variables.Messages;
-import twolovers.cleanmotd.bukkit.variables.Variables;
+
+import dev._2lstudios.cleanmotd.bukkit.commands.CleanMotDCommand;
+import dev._2lstudios.cleanmotd.bukkit.listeners.ServerListPingListener;
+import dev._2lstudios.cleanmotd.bukkit.utils.ConfigurationUtil;
+import dev._2lstudios.cleanmotd.bukkit.variables.Messages;
+import dev._2lstudios.cleanmotd.bukkit.variables.Variables;
 
 public class Main extends JavaPlugin {
 	public void onEnable() {

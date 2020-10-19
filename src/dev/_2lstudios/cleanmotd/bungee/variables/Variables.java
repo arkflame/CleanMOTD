@@ -1,11 +1,12 @@
-package twolovers.cleanmotd.bungee.variables;
+package dev._2lstudios.cleanmotd.bungee.variables;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.config.Configuration;
-import twolovers.cleanmotd.bungee.utils.ConfigurationUtil;
 
 import java.util.Collection;
 import java.util.HashSet;
+
+import dev._2lstudios.cleanmotd.bungee.utils.ConfigurationUtil;
 
 public class Variables {
 	private final ConfigurationUtil configurationUtil;

@@ -1,10 +1,11 @@
-package twolovers.cleanmotd.bukkit.commands;
+package dev._2lstudios.cleanmotd.bukkit.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import twolovers.cleanmotd.bukkit.variables.Messages;
-import twolovers.cleanmotd.bukkit.variables.Variables;
+
+import dev._2lstudios.cleanmotd.bukkit.variables.Messages;
+import dev._2lstudios.cleanmotd.bukkit.variables.Variables;
 
 public class CleanMotDCommand implements CommandExecutor {
 	private final Variables variables;

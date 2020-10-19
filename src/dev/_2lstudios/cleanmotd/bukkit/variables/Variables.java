@@ -1,8 +1,9 @@
-package twolovers.cleanmotd.bukkit.variables;
+package dev._2lstudios.cleanmotd.bukkit.variables;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.Configuration;
-import twolovers.cleanmotd.bukkit.utils.ConfigurationUtil;
+
+import dev._2lstudios.cleanmotd.bukkit.utils.ConfigurationUtil;
 
 import java.util.Collection;
 import java.util.HashSet;
