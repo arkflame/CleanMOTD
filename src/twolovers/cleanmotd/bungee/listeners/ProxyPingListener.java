@@ -3,6 +3,7 @@ package twolovers.cleanmotd.bungee.listeners;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.event.ProxyPingEvent;
+import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 import twolovers.cleanmotd.bungee.variables.Variables;
@@ -18,39 +19,41 @@ public class ProxyPingListener implements Listener {
 	public void onProxyPing(final ProxyPingEvent event) {
 		final ServerPing response = event.getResponse();
 
-		if (response != null || event instanceof Cancellable && ((Cancellable) !event).isCancelled()) {
-			final ServerPing.Players players = response.getPlayers();
-			int onlinePlayers = players.getOnline();
-			int maxPlayers = players.getMax();
+		if (response == null || event instanceof Cancellable && ((Cancellable) event).isCancelled()) {
+			return;
+		}
 
-			if (variables.isFakePlayersEnabled()) {
-				onlinePlayers = onlinePlayers + variables.getFakePlayersAmount(onlinePlayers);
+		final ServerPing.Players players = response.getPlayers();
+		int onlinePlayers = players.getOnline();
+		int maxPlayers = players.getMax();
 
-				players.setOnline(onlinePlayers);
+		if (variables.isFakePlayersEnabled()) {
+			onlinePlayers = onlinePlayers + variables.getFakePlayersAmount(onlinePlayers);
+
+			players.setOnline(onlinePlayers);
+		}
+
+		if (variables.isMaxPlayersEnabled()) {
+			if (variables.isMaxPlayersJustOneMore()) {
+				maxPlayers = onlinePlayers + 1;
+			} else {
+				maxPlayers = variables.getMaxPlayers();
 			}
 
-			if (variables.isMaxPlayersEnabled()) {
-				if (variables.isMaxPlayersJustOneMore()) {
-					maxPlayers = onlinePlayers + 1;
-				} else {
-					maxPlayers = variables.getMaxPlayers();
-				}
+			players.setMax(maxPlayers);
+		}
 
-				players.setMax(maxPlayers);
-			}
+		if (variables.isMotdEnabled()) {
+			response.setDescriptionComponent(new TextComponent(variables.getMOTD(maxPlayers, onlinePlayers)));
+		}
 
-			if (variables.isMotdEnabled()) {
-				response.setDescriptionComponent(new TextComponent(variables.getMOTD(maxPlayers, onlinePlayers)));
-			}
+		if (variables.isCacheEnabled()) {
+			final String address = event.getConnection().getAddress().getHostString();
 
-			if (variables.isCacheEnabled()) {
-				final String address = event.getConnection().getAddress().getHostString();
-
-				if (variables.hasPinged(address)) {
-					response.setFavicon("");
-				} else {
-					variables.addPinged(address);
-				}
+			if (variables.hasPinged(address)) {
+				response.setFavicon("");
+			} else {
+				variables.addPinged(address);
 			}
 		}
 	}
