@@ -13,8 +13,8 @@ public class Variables {
 	private Collection<String> pinged = new HashSet<>();
 	private String[] motdMotds;
 	private int cacheTime, maxPlayers, fakePlayersAmount;
-	private boolean motdEnabled, cacheEnabled, maxPlayersJustOneMore, maxPlayersEnabled, fakePlayersEnabled;
-	private String fakePlayersMode;
+	private boolean motdEnabled, protocolEnabled, cacheEnabled, maxPlayersJustOneMore, maxPlayersEnabled, fakePlayersEnabled;
+	private String protocol, fakePlayersMode;
 
 	public Variables(ConfigurationUtil configurationUtil) {
 		this.configurationUtil = configurationUtil;
@@ -26,6 +26,8 @@ public class Variables {
 
 		motdEnabled = configuration.getBoolean("motd.enabled");
 		motdMotds = configuration.getStringList("motd.motds").toArray(new String[0]);
+		protocolEnabled = configuration.getBoolean("protocol.enabled");
+		protocol = configuration.getString("protocol.mode");
 		cacheEnabled = configuration.getBoolean("cache.enabled");
 		cacheTime = configuration.getInt("cache.time");
 		maxPlayersEnabled = configuration.getBoolean("maxplayers.enabled");
@@ -45,6 +47,14 @@ public class Variables {
 				motdMotds[(int) (Math.floor(Math.random() * motdMotds.length))]
 						.replace("%maxplayers%", String.valueOf(maxPlayers))
 						.replace("%onlineplayers%", String.valueOf(onlinePlayers).replace("%newline%", "\n")));
+	}
+
+	public boolean isProtocolEnabled() {
+		return protocolEnabled;
+	}
+
+	public String getProtocol() {
+		return protocol;
 	}
 
 	public boolean isCacheEnabled() {

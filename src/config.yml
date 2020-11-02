@@ -11,6 +11,14 @@ motd:
         &aCleanMoTD Default MoTD &c[Optimized]
         &d&lCome and enojoy our brand new games!
 
+# Protocol feature requires ProtocolLib to change protocol name on Spigot.
+protocol:
+  # Do you want to enable this module?
+  enabled: true
+
+  # Protocol name
+  name: "FlameCord 1.7-1.16.3"
+
 # Caches requests to only send favicon to the first ping packet of a player.
 # This can prevent crashes with bot attacks and improves performance.
 # Only for BungeeCord as Spigot already seems to cache Favicons.
