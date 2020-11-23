@@ -47,6 +47,10 @@ public class ProxyPingListener implements Listener {
 			response.setDescriptionComponent(new TextComponent(variables.getMOTD(maxPlayers, onlinePlayers)));
 		}
 
+		if (variables.isProtocolEnabled()) {
+			response.getVersion().setName(variables.getProtocol());
+		}
+
 		if (variables.isCacheEnabled()) {
 			final String address = event.getConnection().getAddress().getHostString();
 
