@@ -11,9 +11,9 @@ import java.util.HashSet;
 public class Variables {
 	private final ConfigurationUtil configurationUtil;
 	private Collection<String> pinged = new HashSet<>();
-	private String[] motdMotds;
+	private String[] motdMotds, sampleSamples;
 	private int cacheTime, maxPlayers, fakePlayersAmount;
-	private boolean motdEnabled, protocolEnabled, cacheEnabled, maxPlayersJustOneMore, maxPlayersEnabled, fakePlayersEnabled;
+	private boolean motdEnabled, sampleEnabled, protocolEnabled, cacheEnabled, maxPlayersJustOneMore, maxPlayersEnabled, fakePlayersEnabled;
 	private String protocol, fakePlayersMode;
 
 	public Variables(ConfigurationUtil configurationUtil) {
@@ -26,6 +26,8 @@ public class Variables {
 
 		motdEnabled = configuration.getBoolean("motd.enabled");
 		motdMotds = configuration.getStringList("motd.motds").toArray(new String[0]);
+		sampleEnabled = configuration.getBoolean("sample.enabled");
+		sampleSamples = configuration.getStringList("sample.samples").toArray(new String[0]);
 		protocolEnabled = configuration.getBoolean("protocol.enabled");
 		protocol = configuration.getString("protocol.mode");
 		cacheEnabled = configuration.getBoolean("cache.enabled");
@@ -47,6 +49,18 @@ public class Variables {
 				motdMotds[(int) (Math.floor(Math.random() * motdMotds.length))]
 						.replace("%maxplayers%", String.valueOf(maxPlayers))
 						.replace("%onlineplayers%", String.valueOf(onlinePlayers).replace("%newline%", "\n")));
+	}
+
+	public boolean isSampleEnabled() {
+		return sampleEnabled;
+	}
+
+	public String getSample(final int maxPlayers, final int onlinePlayers) {
+		return ChatColor.translateAlternateColorCodes('&',
+				sampleSamples[(int) (Math.floor(Math.random() * sampleSamples.length))]
+						.replace("%maxplayers%", String.valueOf(maxPlayers))
+						.replace("%onlineplayers%", String.valueOf(onlinePlayers))
+						.replace("%newline%", "\n"));
 	}
 
 	public boolean isProtocolEnabled() {

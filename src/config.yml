@@ -2,19 +2,36 @@ motd:
   # Do you want to enable this module?
   enabled: true
 
-  # Placeholders: %onlineplayers% %maxplayers%
+  # Placeholders: %onlineplayers% %maxplayers% %newline%
   motds:
     - |- 
         &b&lCleanMoTD &f&lDefault &b&lMoTD
         &7There are &a%onlineplayers%&7 players online!
     - |-
         &aCleanMoTD Default MoTD &c[Optimized]
-        &d&lCome and enojoy our brand new games!
+        &d&lCome and enjoy our brand new games!
+
+# This is the list of message shown when hovering over the player count.
+# Sample feature requires ProtocolLib to modify this on Spigot.
+sample:
+  # Do you want to enable this module?
+  enabled: true
+
+  # Placeholders: %onlineplayers% %maxplayers% %newline%
+  samples:
+    - |-
+      &b&lCleanMoTD &f&lDefault &b&lSample
+      &7Online: &a%onlineplayers%&8/&a%maxplayers%
+      &5
+    - |-
+      &aCleanMoTD Default Sample &c[Optimized]
+      &d&lNEW FEATURE YEYY!
+      &5
 
 # Protocol feature requires ProtocolLib to change protocol name on Spigot.
 protocol:
   # Do you want to enable this module?
-  enabled: true
+  enabled: false
 
   # Protocol name
   name: "FlameCord 1.7-1.16.3"
@@ -40,7 +57,7 @@ maxplayers:
   # Example: 12/13 players online.
   justonemore: true
 
-# Only works for BungeeCord because there is no method to modify this on Ping Event.
+# Fake players feature requires ProtocolLib to modify player amount on Spigot.
 fakeplayers:
   # Do you want to enable this module?
   enabled: false
