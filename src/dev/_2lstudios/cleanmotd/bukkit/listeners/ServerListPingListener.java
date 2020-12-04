@@ -25,11 +25,7 @@ public class ServerListPingListener implements Listener {
 		int maxPlayers = event.getMaxPlayers();
 
 		if (variables.isMaxPlayersEnabled()) {
-			if (variables.isMaxPlayersJustOneMore()) {
-				maxPlayers = onlinePlayers + 1;
-			} else {
-				maxPlayers = variables.getMaxPlayers();
-			}
+			maxPlayers = variables.isMaxPlayersJustOneMore() ? onlinePlayers + 1 : variables.getMaxPlayers();
 
 			event.setMaxPlayers(maxPlayers);
 		}

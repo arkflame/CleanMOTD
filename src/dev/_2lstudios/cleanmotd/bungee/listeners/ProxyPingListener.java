@@ -8,6 +8,8 @@ import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
+import java.util.UUID;
+
 public class ProxyPingListener implements Listener {
 	private final Variables variables;
 
@@ -34,11 +36,7 @@ public class ProxyPingListener implements Listener {
 		}
 
 		if (variables.isMaxPlayersEnabled()) {
-			if (variables.isMaxPlayersJustOneMore()) {
-				maxPlayers = onlinePlayers + 1;
-			} else {
-				maxPlayers = variables.getMaxPlayers();
-			}
+			maxPlayers = variables.isMaxPlayersJustOneMore() ? onlinePlayers + 1 : variables.getMaxPlayers();
 
 			players.setMax(maxPlayers);
 		}
@@ -49,6 +47,12 @@ public class ProxyPingListener implements Listener {
 
 		if (variables.isProtocolEnabled()) {
 			response.getVersion().setName(variables.getProtocol());
+		}
+
+		if (variables.isSampleEnabled()) {
+			players.setSample(new ServerPing.PlayerInfo[] {
+					new ServerPing.PlayerInfo(variables.getSample(maxPlayers, onlinePlayers), new UUID(0, 0))
+			});
 		}
 
 		if (variables.isCacheEnabled()) {
