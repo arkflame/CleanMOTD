@@ -48,19 +48,18 @@ public class Variables {
 		return ChatColor.translateAlternateColorCodes('&',
 				motdMotds[(int) (Math.floor(Math.random() * motdMotds.length))]
 						.replace("%maxplayers%", String.valueOf(maxPlayers))
-						.replace("%onlineplayers%", String.valueOf(onlinePlayers).replace("%newline%", "\n")));
+						.replace("%onlineplayers%", String.valueOf(onlinePlayers)));
 	}
 
 	public boolean isSampleEnabled() {
 		return sampleEnabled;
 	}
 
-	public String getSample(final int maxPlayers, final int onlinePlayers) {
+	public String[] getSample(final int maxPlayers, final int onlinePlayers) {
 		return ChatColor.translateAlternateColorCodes('&',
 				sampleSamples[(int) (Math.floor(Math.random() * sampleSamples.length))]
 						.replace("%maxplayers%", String.valueOf(maxPlayers))
-						.replace("%onlineplayers%", String.valueOf(onlinePlayers))
-						.replace("%newline%", "\n"));
+						.replace("%onlineplayers%", String.valueOf(onlinePlayers))).split("\n");
 	}
 
 	public boolean isProtocolEnabled() {

@@ -2,7 +2,7 @@ motd:
   # Do you want to enable this module?
   enabled: true
 
-  # Placeholders: %onlineplayers% %maxplayers% %newline%
+  # Placeholders: %onlineplayers% %maxplayers%
   motds:
     - |- 
         &b&lCleanMoTD &f&lDefault &b&lMoTD
@@ -17,7 +17,7 @@ sample:
   # Do you want to enable this module?
   enabled: true
 
-  # Placeholders: %onlineplayers% %maxplayers% %newline%
+  # Placeholders: %onlineplayers% %maxplayers%
   samples:
     - |-
       &b&lCleanMoTD &f&lDefault &b&lSample
@@ -25,13 +25,13 @@ sample:
       &5
     - |-
       &aCleanMoTD Default Sample &c[Optimized]
-      &d&lNEW FEATURE YEYY!
+      &d&lNew Sample feature!
       &5
 
 # Protocol feature requires ProtocolLib to change protocol name on Spigot.
 protocol:
   # Do you want to enable this module?
-  enabled: false
+  enabled: true
 
   # Protocol name
   name: "FlameCord 1.7-1.16.3"

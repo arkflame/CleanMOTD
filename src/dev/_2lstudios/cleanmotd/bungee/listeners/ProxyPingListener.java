@@ -50,9 +50,15 @@ public class ProxyPingListener implements Listener {
 		}
 
 		if (variables.isSampleEnabled()) {
-			players.setSample(new ServerPing.PlayerInfo[] {
-					new ServerPing.PlayerInfo(variables.getSample(maxPlayers, onlinePlayers), new UUID(0, 0))
-			});
+			final UUID fakeUuid = new UUID(0, 0);
+			final String[] sampleString = variables.getSample(maxPlayers, onlinePlayers);
+			final ServerPing.PlayerInfo[] sample = new ServerPing.PlayerInfo[sampleString.length];
+
+			for (int i = 0; i < sampleString.length; i++) {
+				sample[i] = new ServerPing.PlayerInfo(sampleString[i], fakeUuid);
+			}
+
+			players.setSample(sample);
 		}
 
 		if (variables.isCacheEnabled()) {
