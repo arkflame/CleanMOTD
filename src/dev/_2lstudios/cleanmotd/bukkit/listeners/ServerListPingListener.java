@@ -16,7 +16,6 @@ public class ServerListPingListener implements Listener {
 
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void onServerListPing(final ServerListPingEvent event) {
-		// WARNING!!!
 		// There is no way to get player name on Bukkit.
 		// There is no way to set player count on Bukkit.
 
