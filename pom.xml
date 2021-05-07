@@ -54,12 +54,12 @@
             <artifactId>HamsterAPI</artifactId>
             <version>SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>/home/user/java/bin/HamsterAPI.jar</systemPath>
+            <systemPath>/home/linsaftw/java/bin/HamsterAPI.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>net.md-5</groupId>
             <artifactId>bungeecord-api</artifactId>
-            <version>1.8-SNAPSHOT</version>
+            <version>1.16-R0.5-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
