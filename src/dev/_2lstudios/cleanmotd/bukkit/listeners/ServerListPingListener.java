@@ -19,7 +19,6 @@ public class ServerListPingListener implements Listener {
 		// WARNING!!!
 		// There is no way to get player name on Bukkit.
 		// There is no way to set player count on Bukkit.
-		// Bukkit already has cache for Favicon.
 
 		final int onlinePlayers = event.getNumPlayers();
 		int maxPlayers = event.getMaxPlayers();

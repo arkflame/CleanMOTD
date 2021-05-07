@@ -60,15 +60,5 @@ public class ProxyPingListener implements Listener {
 
 			players.setSample(sample);
 		}
-
-		if (variables.isCacheEnabled()) {
-			final String address = event.getConnection().getAddress().getHostString();
-
-			if (variables.hasPinged(address)) {
-				response.setFavicon("");
-			} else {
-				variables.addPinged(address);
-			}
-		}
 	}
 }

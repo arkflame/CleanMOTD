@@ -4,8 +4,6 @@ import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.api.plugin.PluginManager;
 
-import java.util.concurrent.TimeUnit;
-
 import dev._2lstudios.cleanmotd.bungee.commands.CleanMotDCommand;
 import dev._2lstudios.cleanmotd.bungee.listeners.ProxyPingListener;
 import dev._2lstudios.cleanmotd.bungee.utils.ConfigurationUtil;
@@ -27,6 +25,5 @@ public class Main extends Plugin {
 		pluginManager.registerListener(this, new ProxyPingListener(variables));
 		pluginManager.registerCommand(this, new CleanMotDCommand("cleanmotd", variables, messages));
 
-		proxy.getScheduler().schedule(this, variables::clearPinged, variables.getCacheTime(), variables.getCacheTime(), TimeUnit.MILLISECONDS);
 	}
 }

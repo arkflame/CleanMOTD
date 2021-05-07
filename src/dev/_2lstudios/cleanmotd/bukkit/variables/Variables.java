@@ -12,8 +12,8 @@ public class Variables {
 	private final ConfigurationUtil configurationUtil;
 	private Collection<String> pinged = new HashSet<>();
 	private String[] motdMotds, sampleSamples;
-	private int cacheTime, maxPlayers, fakePlayersAmount;
-	private boolean motdEnabled, sampleEnabled, protocolEnabled, cacheEnabled, maxPlayersJustOneMore, maxPlayersEnabled, fakePlayersEnabled;
+	private int maxPlayers, fakePlayersAmount;
+	private boolean motdEnabled, sampleEnabled, protocolEnabled, maxPlayersJustOneMore, maxPlayersEnabled, fakePlayersEnabled;
 	private String protocol, fakePlayersMode;
 
 	public Variables(ConfigurationUtil configurationUtil) {
@@ -30,8 +30,6 @@ public class Variables {
 		sampleSamples = configuration.getStringList("sample.samples").toArray(new String[0]);
 		protocolEnabled = configuration.getBoolean("protocol.enabled");
 		protocol = configuration.getString("protocol.mode");
-		cacheEnabled = configuration.getBoolean("cache.enabled");
-		cacheTime = configuration.getInt("cache.time");
 		maxPlayersEnabled = configuration.getBoolean("maxplayers.enabled");
 		maxPlayers = configuration.getInt("maxplayers.maxplayers");
 		maxPlayersJustOneMore = configuration.getBoolean("maxplayers.justonemore");
@@ -68,14 +66,6 @@ public class Variables {
 
 	public String getProtocol() {
 		return protocol;
-	}
-
-	public boolean isCacheEnabled() {
-		return cacheEnabled;
-	}
-
-	public int getCacheTime() {
-		return cacheTime;
 	}
 
 	public boolean isMaxPlayersEnabled() {

@@ -36,7 +36,5 @@ public class Main extends JavaPlugin {
 
 			ProtocolLibrary.getProtocolManager().addPacketListener(new ServerInfoListener(this, variables));
 		}
-
-		server.getScheduler().runTaskTimer(this, variables::clearPinged, variables.getCacheTime(), variables.getCacheTime());
 	}
 }
