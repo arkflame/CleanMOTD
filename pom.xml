@@ -36,6 +36,10 @@
             <id>bungee-repo</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>dmulloy2-repo</id>
+            <url>https://repo.dmulloy2.net/repository/public/</url>
+        </repository>
     </repositories>
     <dependencies>
         <dependency>
@@ -50,11 +54,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>net</groupId>
-            <artifactId>HamsterAPI</artifactId>
-            <version>SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>/home/linsaftw/java/bin/HamsterAPI.jar</systemPath>
+            <groupId>com.comphenix.protocol</groupId>
+            <artifactId>ProtocolLib</artifactId>
+            <version>4.6.0</version>
         </dependency>
         <dependency>
             <groupId>net.md-5</groupId>
