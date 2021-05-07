@@ -34,7 +34,7 @@ protocol:
   enabled: true
 
   # Protocol name
-  name: "FlameCord 1.7-1.16.3"
+  name: "FlameCord 1.7-1.16.5"
 
 maxplayers:
   # Do you want to enable this module?
