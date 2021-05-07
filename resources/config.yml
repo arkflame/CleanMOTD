@@ -3,12 +3,18 @@ motd:
 
   # Placeholders: %onlineplayers% %maxplayers%
   motds:
-    - |- 
-        &b&lCleanMoTD &f&lDefault &b&lMoTD
-        &7There are &a%onlineplayers%&7 players online!
-    - |-
-        &aCleanMoTD Default MoTD &c[Optimized]
-        &d&lCome and enjoy our brand new games!
+    default:
+      - |- 
+          &b&lCleanMoTD &f&lDefault &b&lMoTD
+          &7There are &a%onlineplayers%&7 players online!
+      - |-
+          &aCleanMoTD Default MoTD &c[Optimized]
+          &d&lCome and enjoy our brand new games!
+    # This is an example protocol specific motd.
+    47:
+      - |-
+          &aCleanMoTD Default MoTD &c[Version Specific]
+          &b&lYou are running Minecraft 1.8!
 
 # This is the list of message shown when hovering over the player count.
 # Requires ProtocolLib, doesn't work on Bungee.
