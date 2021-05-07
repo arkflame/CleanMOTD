@@ -16,14 +16,17 @@ import com.comphenix.protocol.wrappers.WrappedServerPing;
 import org.bukkit.plugin.Plugin;
 
 import dev._2lstudios.cleanmotd.bukkit.variables.Variables;
+import us.myles.ViaVersion.api.Via;
 
 public class ServerInfoListener extends PacketAdapter {
     private final Variables variables;
+    private final boolean viaversionEnabled;
 
-    public ServerInfoListener(final Plugin plugin, final Variables variables) {
+    public ServerInfoListener(final Plugin plugin, final Variables variables, final boolean viaversionEnabled) {
         super(plugin, ListenerPriority.HIGH, Arrays.asList(PacketType.Status.Server.OUT_SERVER_INFO),
                 ListenerOptions.ASYNC);
         this.variables = variables;
+        this.viaversionEnabled = viaversionEnabled;
     }
 
     @Override
@@ -34,7 +37,7 @@ public class ServerInfoListener extends PacketAdapter {
 
         final WrappedServerPing ping = event.getPacket().getServerPings().read(0);
         final String protocol = variables.getProtocol();
-		int maxPlayers = ping.getPlayersMaximum();
+        int maxPlayers = ping.getPlayersMaximum();
         int onlinePlayers = ping.getPlayersOnline();
 
         if (variables.isFakePlayersEnabled()) {
@@ -47,15 +50,21 @@ public class ServerInfoListener extends PacketAdapter {
             ping.setVersionName(protocol);
         }
 
-		if (variables.isMaxPlayersEnabled()) {
-			maxPlayers = variables.isMaxPlayersJustOneMore() ? onlinePlayers + 1 : variables.getMaxPlayers();
+        if (variables.isMaxPlayersEnabled()) {
+            maxPlayers = variables.isMaxPlayersJustOneMore() ? onlinePlayers + 1 : variables.getMaxPlayers();
 
-			ping.setPlayersMaximum(maxPlayers);
-		}
+            ping.setPlayersMaximum(maxPlayers);
+        }
 
-		if (variables.isMotdEnabled()) {
-			ping.setMotD(variables.getMOTD(maxPlayers, onlinePlayers));
-		}
+        if (variables.isMotdEnabled()) {
+            if (viaversionEnabled) {
+                final int playerVersion = Via.getAPI().getPlayerVersion(event.getPlayer().getUniqueId());
+
+                ping.setMotD(variables.getMOTD(maxPlayers, onlinePlayers, String.valueOf(playerVersion)));
+            } else {
+                ping.setMotD(variables.getMOTD(maxPlayers, onlinePlayers));
+            }
+        }
 
         if (variables.isSampleEnabled()) {
             final UUID fakeUuid = new UUID(0, 0);

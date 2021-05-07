@@ -7,14 +7,17 @@ import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
+import us.myles.ViaVersion.api.Via;
 
 import java.util.UUID;
 
 public class ProxyPingListener implements Listener {
 	private final Variables variables;
+	private final boolean viaversionEnabled;
 
-	public ProxyPingListener(final Variables variables) {
+	public ProxyPingListener(final Variables variables, final boolean viaversionEnabled) {
 		this.variables = variables;
+		this.viaversionEnabled = viaversionEnabled;
 	}
 
 	@EventHandler(priority = 64)
@@ -42,7 +45,14 @@ public class ProxyPingListener implements Listener {
 		}
 
 		if (variables.isMotdEnabled()) {
-			response.setDescriptionComponent(new TextComponent(variables.getMOTD(maxPlayers, onlinePlayers)));
+			if (viaversionEnabled) {
+				final int playerVersion = Via.getAPI().getPlayerVersion(event.getConnection().getUniqueId());
+
+				response.setDescriptionComponent(
+						new TextComponent(variables.getMOTD(maxPlayers, onlinePlayers, String.valueOf(playerVersion))));
+			} else {
+				response.setDescriptionComponent(new TextComponent(variables.getMOTD(maxPlayers, onlinePlayers)));
+			}
 		}
 
 		if (variables.isProtocolEnabled()) {

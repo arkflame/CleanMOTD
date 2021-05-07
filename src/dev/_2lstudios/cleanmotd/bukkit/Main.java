@@ -29,7 +29,8 @@ public class Main extends JavaPlugin {
 		getCommand("cleanmotd").setExecutor(new CleanMotDCommand(variables, messages));
 
 		if (pluginManager.isPluginEnabled("ProtocolLib")) {
-			ProtocolLibrary.getProtocolManager().addPacketListener(new ServerInfoListener(this, variables));
+			ProtocolLibrary.getProtocolManager().addPacketListener(
+					new ServerInfoListener(this, variables, pluginManager.isPluginEnabled("ViaVersion")));
 		} else {
 			pluginManager.registerEvents(new ServerListPingListener(variables), this);
 		}
