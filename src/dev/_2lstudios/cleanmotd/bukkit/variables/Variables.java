@@ -2,18 +2,27 @@ package dev._2lstudios.cleanmotd.bukkit.variables;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.Configuration;
+import org.bukkit.configuration.ConfigurationSection;
 
 import dev._2lstudios.cleanmotd.bukkit.utils.ConfigurationUtil;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 
 public class Variables {
+	private static final String[] DEFAULT_MOTD = new String[] { "CleanMoTD default generated MoTD",
+			"Whoops... No MoTD has been specified!" };
+
 	private final ConfigurationUtil configurationUtil;
+	final Map<String, String[]> motds = new HashMap<>();
 	private Collection<String> pinged = new HashSet<>();
-	private String[] motdMotds, sampleSamples;
+	private String[] sampleSamples;
 	private int maxPlayers, fakePlayersAmount;
-	private boolean motdEnabled, sampleEnabled, protocolEnabled, maxPlayersJustOneMore, maxPlayersEnabled, fakePlayersEnabled;
+	private boolean motdEnabled, sampleEnabled, protocolEnabled, maxPlayersJustOneMore, maxPlayersEnabled,
+			fakePlayersEnabled;
 	private String protocol, fakePlayersMode;
 
 	public Variables(ConfigurationUtil configurationUtil) {
@@ -23,9 +32,15 @@ public class Variables {
 
 	public void reloadConfig() {
 		final Configuration configuration = configurationUtil.getConfiguration("%datafolder%/config.yml");
+		final ConfigurationSection motdsSection = configuration.getConfigurationSection("motd.motds");
+
+		for (final String key : motdsSection.getKeys(false)) {
+			final List<String> value = motdsSection.getStringList(key);
+
+			motds.put(key, value.toArray(new String[2]));
+		}
 
 		motdEnabled = configuration.getBoolean("motd.enabled");
-		motdMotds = configuration.getStringList("motd.motds").toArray(new String[0]);
 		sampleEnabled = configuration.getBoolean("sample.enabled");
 		sampleSamples = configuration.getStringList("sample.samples").toArray(new String[0]);
 		protocolEnabled = configuration.getBoolean("protocol.enabled");
@@ -42,11 +57,28 @@ public class Variables {
 		return motdEnabled;
 	}
 
-	public String getMOTD(final int maxPlayers, final int onlinePlayers) {
+	public String getMOTD(final int maxPlayers, final int onlinePlayers, final String[] protocolMotds) {
+		final int randomIndex = (int) (Math.floor(Math.random() * protocolMotds.length));
+
 		return ChatColor.translateAlternateColorCodes('&',
-				motdMotds[(int) (Math.floor(Math.random() * motdMotds.length))]
-						.replace("%maxplayers%", String.valueOf(maxPlayers))
+				protocolMotds[randomIndex].replace("%maxplayers%", String.valueOf(maxPlayers))
 						.replace("%onlineplayers%", String.valueOf(onlinePlayers)));
+	}
+
+	public String getMOTD(final int maxPlayers, final int onlinePlayers, final String protocol) {
+		final String[] protocolMotds;
+
+		if (motds.containsKey(protocol)) {
+			protocolMotds = motds.get(protocol);
+		} else {
+			protocolMotds = motds.getOrDefault("default", DEFAULT_MOTD);
+		}
+
+		return getMOTD(maxPlayers, onlinePlayers, protocolMotds);
+	}
+
+	public String getMOTD(final int maxPlayers, final int onlinePlayers) {
+		return getMOTD(maxPlayers, onlinePlayers, "default");
 	}
 
 	public boolean isSampleEnabled() {
@@ -57,7 +89,8 @@ public class Variables {
 		return ChatColor.translateAlternateColorCodes('&',
 				sampleSamples[(int) (Math.floor(Math.random() * sampleSamples.length))]
 						.replace("%maxplayers%", String.valueOf(maxPlayers))
-						.replace("%onlineplayers%", String.valueOf(onlinePlayers))).split("\n");
+						.replace("%onlineplayers%", String.valueOf(onlinePlayers)))
+				.split("\n");
 	}
 
 	public boolean isProtocolEnabled() {
