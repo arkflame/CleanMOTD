@@ -26,15 +26,12 @@ public class Main extends JavaPlugin {
 		final Messages messages = new Messages(configurationUtil);
 		final PluginManager pluginManager = server.getPluginManager();
 
-		pluginManager.registerEvents(new ServerListPingListener(variables), this);
 		getCommand("cleanmotd").setExecutor(new CleanMotDCommand(variables, messages));
 
-		if (variables.isProtocolEnabled() || variables.isSampleEnabled() || variables.isFakePlayersEnabled()) {
-			if (!pluginManager.isPluginEnabled("ProtocolLib")) {
-				throw new IllegalStateException("Protocol feature requires ProtocolLib to change protocol name on Spigot.");
-			}
-
+		if (pluginManager.isPluginEnabled("ProtocolLib")) {
 			ProtocolLibrary.getProtocolManager().addPacketListener(new ServerInfoListener(this, variables));
+		} else {
+			pluginManager.registerEvents(new ServerListPingListener(variables), this);
 		}
 	}
 }
