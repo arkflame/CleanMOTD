@@ -34,6 +34,7 @@ public class ServerInfoListener extends PacketAdapter {
 
         final WrappedServerPing ping = event.getPacket().getServerPings().read(0);
         final String protocol = variables.getProtocol();
+		int maxPlayers = ping.getPlayersMaximum();
         int onlinePlayers = ping.getPlayersOnline();
 
         if (variables.isFakePlayersEnabled()) {
@@ -45,6 +46,16 @@ public class ServerInfoListener extends PacketAdapter {
         if (variables.isProtocolEnabled()) {
             ping.setVersionName(protocol);
         }
+
+		if (variables.isMaxPlayersEnabled()) {
+			maxPlayers = variables.isMaxPlayersJustOneMore() ? onlinePlayers + 1 : variables.getMaxPlayers();
+
+			ping.setPlayersMaximum(maxPlayers);
+		}
+
+		if (variables.isMotdEnabled()) {
+			ping.setMotD(variables.getMOTD(maxPlayers, onlinePlayers));
+		}
 
         if (variables.isSampleEnabled()) {
             final UUID fakeUuid = new UUID(0, 0);
