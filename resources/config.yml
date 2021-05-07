@@ -1,5 +1,4 @@
 motd:
-  # Do you want to enable this module?
   enabled: true
 
   # Placeholders: %onlineplayers% %maxplayers%
@@ -12,9 +11,8 @@ motd:
         &d&lCome and enjoy our brand new games!
 
 # This is the list of message shown when hovering over the player count.
-# Sample feature requires ProtocolLib to modify this on Spigot.
+# Requires ProtocolLib, doesn't work on Bungee.
 sample:
-  # Do you want to enable this module?
   enabled: true
 
   # Placeholders: %onlineplayers% %maxplayers%
@@ -28,16 +26,15 @@ sample:
       &d&lNew Sample feature!
       &5
 
-# Protocol feature requires ProtocolLib to change protocol name on Spigot.
+# This is shown as the server version.
+# Requires ProtocolLib, doesn't work on Bungee.
 protocol:
-  # Do you want to enable this module?
   enabled: true
 
   # Protocol name
   name: "FlameCord 1.7-1.16.5"
 
 maxplayers:
-  # Do you want to enable this module?
   enabled: true
 
   # Changes the max players value.
@@ -47,9 +44,8 @@ maxplayers:
   # Example: 12/13 players online.
   justonemore: true
 
-# Fake players feature requires ProtocolLib to modify player amount on Spigot.
+# Requires ProtocolLib on Bukkit.
 fakeplayers:
-  # Do you want to enable this module?
   enabled: false
 
   # Sets the amount of fakeplayers.
