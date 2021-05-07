@@ -1,3 +1,4 @@
+# Using ProtocolLib will use packets instead of events.
 motd:
   enabled: true
 
