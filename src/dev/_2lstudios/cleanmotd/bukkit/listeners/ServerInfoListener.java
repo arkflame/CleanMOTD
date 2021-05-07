@@ -1,6 +1,8 @@
 package dev._2lstudios.cleanmotd.bukkit.listeners;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 import com.comphenix.protocol.PacketType;
@@ -48,13 +50,13 @@ public class ServerInfoListener extends PacketAdapter {
         if (variables.isSampleEnabled()) {
             final UUID fakeUuid = new UUID(0, 0);
             final String[] sampleString = variables.getSample(ping.getPlayersMaximum(), onlinePlayers);
-            final WrappedGameProfile[] sample = new WrappedGameProfile[sampleString.length];
+            final List<WrappedGameProfile> sample = new ArrayList<WrappedGameProfile>(sampleString.length);
 
-            for (int i = 0; i < sampleString.length; i++) {
-                sample[i] = new WrappedGameProfile(fakeUuid, sampleString[i]);
+            for (final String sampleStringEntry : sampleString) {
+                sample.add(new WrappedGameProfile(fakeUuid, sampleStringEntry));
             }
 
-            ping.setPlayers(Arrays.asList(sample));
+            ping.setPlayers(sample);
         }
     }
 }
