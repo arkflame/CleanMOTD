@@ -34,7 +34,6 @@ public class ServerInfoListener extends PacketAdapter {
 
         final WrappedServerPing ping = event.getPacket().getServerPings().read(0);
         final String protocol = variables.getProtocol();
-
         int onlinePlayers = ping.getPlayersOnline();
 
         if (variables.isFakePlayersEnabled()) {
