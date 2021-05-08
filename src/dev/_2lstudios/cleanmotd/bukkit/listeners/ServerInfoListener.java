@@ -16,7 +16,6 @@ import com.comphenix.protocol.wrappers.WrappedServerPing;
 import org.bukkit.plugin.Plugin;
 
 import dev._2lstudios.cleanmotd.bukkit.variables.Variables;
-import us.myles.ViaVersion.api.Via;
 
 public class ServerInfoListener extends PacketAdapter {
     private final Variables variables;
@@ -58,9 +57,7 @@ public class ServerInfoListener extends PacketAdapter {
 
         if (variables.isMotdEnabled()) {
             if (viaversionEnabled) {
-                final int playerVersion = Via.getAPI().getPlayerVersion(event.getPlayer().getUniqueId());
-
-                ping.setMotD(variables.getMOTD(maxPlayers, onlinePlayers, String.valueOf(playerVersion)));
+                ping.setMotD(variables.getMOTD(maxPlayers, onlinePlayers));
             } else {
                 ping.setMotD(variables.getMOTD(maxPlayers, onlinePlayers));
             }

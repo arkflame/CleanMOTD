@@ -7,7 +7,6 @@ import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
-import us.myles.ViaVersion.api.Via;
 
 import java.util.UUID;
 
@@ -46,10 +45,7 @@ public class ProxyPingListener implements Listener {
 
 		if (variables.isMotdEnabled()) {
 			if (viaversionEnabled) {
-				final int playerVersion = Via.getAPI().getPlayerVersion(event.getConnection().getUniqueId());
-
-				response.setDescriptionComponent(
-						new TextComponent(variables.getMOTD(maxPlayers, onlinePlayers, String.valueOf(playerVersion))));
+				response.setDescriptionComponent(new TextComponent(variables.getMOTD(maxPlayers, onlinePlayers)));
 			} else {
 				response.setDescriptionComponent(new TextComponent(variables.getMOTD(maxPlayers, onlinePlayers)));
 			}
