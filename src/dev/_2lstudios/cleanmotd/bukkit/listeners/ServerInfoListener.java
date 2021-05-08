@@ -38,7 +38,6 @@ public class ServerInfoListener extends PacketAdapter {
         }
 
         final WrappedServerPing ping = event.getPacket().getServerPings().read(0);
-        final String protocol = variables.getProtocol();
         int maxPlayers = ping.getPlayersMaximum();
         int onlinePlayers = ping.getPlayersOnline();
 
@@ -46,10 +45,6 @@ public class ServerInfoListener extends PacketAdapter {
             onlinePlayers = onlinePlayers + variables.getFakePlayersAmount(onlinePlayers);
 
             ping.setPlayersOnline(onlinePlayers);
-        }
-
-        if (variables.isProtocolEnabled()) {
-            ping.setVersionName(protocol);
         }
 
         if (variables.isMaxPlayersEnabled()) {

@@ -16,7 +16,7 @@ public class Variables {
 	private String[] motds;
 	private String[] sampleSamples;
 	private int maxPlayers, fakePlayersAmount;
-	private boolean motdEnabled, sampleEnabled, protocolEnabled, maxPlayersJustOneMore, maxPlayersEnabled,
+	private boolean motdEnabled, sampleEnabled, maxPlayersJustOneMore, maxPlayersEnabled,
 			fakePlayersEnabled;
 	private String protocol, fakePlayersMode;
 
@@ -32,7 +32,6 @@ public class Variables {
 		motds = configuration.getStringList("motd.motds").toArray(new String[0]);
 		sampleEnabled = configuration.getBoolean("sample.enabled");
 		sampleSamples = configuration.getStringList("sample.samples").toArray(new String[0]);
-		protocolEnabled = configuration.getBoolean("protocol.enabled");
 		protocol = configuration.getString("protocol.mode");
 		maxPlayersEnabled = configuration.getBoolean("maxplayers.enabled");
 		maxPlayers = configuration.getInt("maxplayers.maxplayers");
@@ -68,10 +67,6 @@ public class Variables {
 						.replace("%maxplayers%", String.valueOf(maxPlayers))
 						.replace("%onlineplayers%", String.valueOf(onlinePlayers)))
 				.split("\n");
-	}
-
-	public boolean isProtocolEnabled() {
-		return protocolEnabled;
 	}
 
 	public String getProtocol() {

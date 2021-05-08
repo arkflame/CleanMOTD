@@ -12,11 +12,9 @@ import java.util.UUID;
 
 public class ProxyPingListener implements Listener {
 	private final Variables variables;
-	private final boolean viaversionEnabled;
 
-	public ProxyPingListener(final Variables variables, final boolean viaversionEnabled) {
+	public ProxyPingListener(final Variables variables) {
 		this.variables = variables;
-		this.viaversionEnabled = viaversionEnabled;
 	}
 
 	@EventHandler(priority = 64)
@@ -44,11 +42,7 @@ public class ProxyPingListener implements Listener {
 		}
 
 		if (variables.isMotdEnabled()) {
-			if (viaversionEnabled) {
-				response.setDescriptionComponent(new TextComponent(variables.getMOTD(maxPlayers, onlinePlayers)));
-			} else {
-				response.setDescriptionComponent(new TextComponent(variables.getMOTD(maxPlayers, onlinePlayers)));
-			}
+			response.setDescriptionComponent(new TextComponent(variables.getMOTD(maxPlayers, onlinePlayers)));
 		}
 
 		if (variables.isProtocolEnabled()) {

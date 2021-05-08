@@ -23,7 +23,7 @@ public class Main extends Plugin {
 		final PluginManager pluginManager = proxy.getPluginManager();
 
 		pluginManager.registerListener(this,
-				new ProxyPingListener(variables, pluginManager.getPlugin("ViaVersion") != null));
+				new ProxyPingListener(variables));
 		pluginManager.registerCommand(this, new CleanMotDCommand("cleanmotd", variables, messages));
 
 	}
