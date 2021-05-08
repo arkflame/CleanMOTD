@@ -21,11 +21,9 @@ sample:
     - |-
       &b&lCleanMoTD &f&lDefault &b&lSample
       &7Online: &a%onlineplayers%&8/&a%maxplayers%
-      &5
     - |-
       &aCleanMoTD Default Sample &c[Optimized]
       &d&lNew Sample feature!
-      &5
 
 # This is shown as the server version.
 # Requires ProtocolLib, doesn't work on Bungee.
