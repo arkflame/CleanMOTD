@@ -26,7 +26,7 @@ sample:
       &d&lNew Sample feature!
 
 # This is shown as the server version.
-# Requires ProtocolLib, doesn't work on Bungee.
+# Only works on BungeeCord.
 protocol:
   enabled: true
 
