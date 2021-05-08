@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.ListenerOptions;
 import com.comphenix.protocol.events.ListenerPriority;
 import com.comphenix.protocol.events.PacketAdapter;
@@ -19,13 +20,15 @@ import dev._2lstudios.cleanmotd.bukkit.variables.Variables;
 
 public class ServerInfoListener extends PacketAdapter {
     private final Variables variables;
-    private final boolean viaversionEnabled;
 
-    public ServerInfoListener(final Plugin plugin, final Variables variables, final boolean viaversionEnabled) {
+    public ServerInfoListener(final Plugin plugin, final Variables variables) {
         super(plugin, ListenerPriority.HIGH, Arrays.asList(PacketType.Status.Server.OUT_SERVER_INFO),
                 ListenerOptions.ASYNC);
         this.variables = variables;
-        this.viaversionEnabled = viaversionEnabled;
+    }
+
+    public void register() {
+        ProtocolLibrary.getProtocolManager().addPacketListener(this);
     }
 
     @Override
@@ -56,11 +59,7 @@ public class ServerInfoListener extends PacketAdapter {
         }
 
         if (variables.isMotdEnabled()) {
-            if (viaversionEnabled) {
-                ping.setMotD(variables.getMOTD(maxPlayers, onlinePlayers));
-            } else {
-                ping.setMotD(variables.getMOTD(maxPlayers, onlinePlayers));
-            }
+            ping.setMotD(variables.getMOTD(maxPlayers, onlinePlayers));
         }
 
         if (variables.isSampleEnabled()) {

@@ -1,7 +1,5 @@
 package dev._2lstudios.cleanmotd.bukkit;
 
-import com.comphenix.protocol.ProtocolLibrary;
-
 import org.bukkit.Server;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -29,8 +27,7 @@ public class Main extends JavaPlugin {
 		getCommand("cleanmotd").setExecutor(new CleanMotDCommand(variables, messages));
 
 		if (pluginManager.isPluginEnabled("ProtocolLib")) {
-			ProtocolLibrary.getProtocolManager().addPacketListener(
-					new ServerInfoListener(this, variables, pluginManager.isPluginEnabled("ViaVersion")));
+			new ServerInfoListener(this, variables).register();
 		} else {
 			pluginManager.registerEvents(new ServerListPingListener(variables), this);
 		}
