@@ -9,7 +9,7 @@ import org.bukkit.configuration.Configuration;
 import dev._2lstudios.cleanmotd.bukkit.utils.ConfigurationUtil;
 
 public class Variables {
-	private static final String DEFAULT_MOTD = "CleanMoTD default generated MoTD\nWhoops... No MoTD has been specified!";
+	private static final String DEFAULT_MOTD = "CleanMotD default generated MotD\nWhoops... No MotD has been specified!";
 
 	private final ConfigurationUtil configurationUtil;
 	private final Collection<String> pinged = new HashSet<>();

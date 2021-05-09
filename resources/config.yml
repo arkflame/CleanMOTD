@@ -5,10 +5,10 @@ motd:
   # Placeholders: %onlineplayers% %maxplayers%
   motds:
     - |- 
-        &b&lCleanMoTD &f&lDefault &b&lMoTD
+        &b&lCleanMotD &f&lDefault &b&lMotD
         &7There are &a%onlineplayers%&7 players online!
     - |-
-        &aCleanMoTD Default MoTD &c[Optimized]
+        &aCleanMotD Default MotD &c[Optimized]
         &d&lCome and enjoy our brand new games!
 
 # This is the list of message shown when hovering over the player count.
@@ -19,10 +19,10 @@ sample:
   # Placeholders: %onlineplayers% %maxplayers%
   samples:
     - |-
-      &b&lCleanMoTD &f&lDefault &b&lSample
+      &b&lCleanMotD &f&lDefault &b&lSample
       &7Online: &a%onlineplayers%&8/&a%maxplayers%
     - |-
-      &aCleanMoTD Default Sample &c[Optimized]
+      &aCleanMotD Default Sample &c[Optimized]
       &d&lNew Sample feature!
 
 # This is shown as the server version.
