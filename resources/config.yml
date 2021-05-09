@@ -12,7 +12,7 @@ motd:
         &d&lCome and enjoy our brand new games!
 
 # This is the list of message shown when hovering over the player count.
-# Requires ProtocolLib, doesn't work on Bungee.
+# Only works on Bukkit (Requires ProtocolLib)
 sample:
   enabled: true
 
@@ -25,8 +25,8 @@ sample:
       &aCleanMotD Default Sample &c[Optimized]
       &d&lNew Sample feature!
 
-# This is shown as the server version.
-# Only works on BungeeCord.
+# This is shown as the server version name.
+# Requires ProtocolLib on Bukkit to work.
 protocol:
   enabled: true
 
@@ -43,7 +43,7 @@ maxplayers:
   # Example: 12/13 players online.
   justonemore: true
 
-# Requires ProtocolLib on Bukkit.
+# Requires ProtocolLib on Bukkit to work.
 fakeplayers:
   enabled: false
 
