@@ -68,5 +68,9 @@ public class ServerInfoListener extends PacketAdapter {
 
             ping.setPlayers(sample);
         }
+
+        if (variables.isProtocolEnabled()) {
+            ping.setVersionName(variables.getProtocolName());
+        }
     }
 }

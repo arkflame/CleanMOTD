@@ -46,7 +46,7 @@ public class ProxyPingListener implements Listener {
 		}
 
 		if (variables.isProtocolEnabled()) {
-			response.getVersion().setName(variables.getProtocol());
+			response.getVersion().setName(variables.getProtocolName());
 		}
 
 		if (variables.isSampleEnabled()) {
