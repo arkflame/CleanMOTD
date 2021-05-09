@@ -1,5 +1,5 @@
 name: CleanMotD
-version: 0.2.6
+version: 0.2.7
 main: dev._2lstudios.cleanmotd.bukkit.Main
 description: Simple MotD managing plugin.
 author: 2LS
