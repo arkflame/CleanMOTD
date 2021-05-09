@@ -32,7 +32,7 @@ public class Variables {
 		sampleEnabled = configuration.getBoolean("sample.enabled");
 		sampleSamples = configuration.getStringList("sample.samples").toArray(new String[0]);
 		protocolEnabled = configuration.getBoolean("protocol.enabled");
-		protocol = configuration.getString("protocol.mode");
+		protocol = configuration.getString("protocol.name");
 		maxPlayersEnabled = configuration.getBoolean("maxplayers.enabled");
 		maxPlayers = configuration.getInt("maxplayers.maxplayers");
 		maxPlayersJustOneMore = configuration.getBoolean("maxplayers.justonemore");
