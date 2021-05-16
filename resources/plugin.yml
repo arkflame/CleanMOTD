@@ -4,6 +4,7 @@ main: dev._2lstudios.cleanmotd.bukkit.Main
 description: Simple MotD managing plugin.
 author: 2LS
 softdepend: [ProtocolLib]
+api-version: 1.13
 commands:
   cleanmotd:
     description: "Main CleanMotD command."
