@@ -1,10 +1,16 @@
-name: CleanMotD
+name: MineBlockMotd
 version: 0.2.7
-main: dev._2lstudios.cleanmotd.bukkit.Main
-description: Simple MotD managing plugin.
-author: 2LS
+main: org.mineblock.motd.bukkit.Main
+description: MineBlock 服务器标语插件
+authors:
+  - 2LS
+  - MineBlock Team.
 softdepend: [ProtocolLib]
 api-version: 1.13
 commands:
-  cleanmotd:
-    description: "Main CleanMotD command."
+  motd:
+    description: "MineBlockMotd 插件主命令"
+permissions:
+  mineblock.command.motd:
+    default: op
+    description: 允许使用 /motd

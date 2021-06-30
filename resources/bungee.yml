@@ -1,5 +1,5 @@
-name: CleanMotD
+name: MineBlockMotd
 version: 0.2.7
-main: dev._2lstudios.cleanmotd.bungee.Main
-description: Simple MotD managing plugin.
-author: 2LS
+main: org.mineblock.motd.bungee.Main
+description: MineBlock 服务器标语插件
+authors: [2LS, MineBlock Team.]

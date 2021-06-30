@@ -1,4 +1,4 @@
-package dev._2lstudios.cleanmotd.bukkit.listeners;
+package org.mineblock.motd.bukkit.listeners;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +16,7 @@ import com.comphenix.protocol.wrappers.WrappedServerPing;
 
 import org.bukkit.plugin.Plugin;
 
-import dev._2lstudios.cleanmotd.bukkit.variables.Variables;
+import org.mineblock.motd.bukkit.variables.Variables;
 
 public class ServerInfoListener extends PacketAdapter {
     private final Variables variables;

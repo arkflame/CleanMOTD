@@ -1,11 +1,11 @@
-package dev._2lstudios.cleanmotd.bukkit.listeners;
+package org.mineblock.motd.bukkit.listeners;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerListPingEvent;
 
-import dev._2lstudios.cleanmotd.bukkit.variables.Variables;
+import org.mineblock.motd.bukkit.variables.Variables;
 
 public class ServerListPingListener implements Listener {
 	private final Variables variables;

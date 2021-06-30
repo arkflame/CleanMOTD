@@ -1,8 +1,9 @@
-package dev._2lstudios.cleanmotd.bungee.variables;
+package org.mineblock.motd.bukkit.variables;
 
-import dev._2lstudios.cleanmotd.bungee.utils.ConfigurationUtil;
-import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.config.Configuration;
+import org.bukkit.ChatColor;
+import org.bukkit.configuration.Configuration;
+
+import org.mineblock.motd.bukkit.utils.ConfigurationUtil;
 
 public class Messages {
 	private final ConfigurationUtil configurationUtil;

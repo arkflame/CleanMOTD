@@ -1,6 +1,6 @@
-package dev._2lstudios.cleanmotd.bungee.listeners;
+package org.mineblock.motd.bungee.listeners;
 
-import dev._2lstudios.cleanmotd.bungee.variables.Variables;
+import org.mineblock.motd.bungee.variables.Variables;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.event.ProxyPingEvent;

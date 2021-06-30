@@ -1,4 +1,4 @@
-package dev._2lstudios.cleanmotd.bukkit.variables;
+package org.mineblock.motd.bukkit.variables;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -6,7 +6,7 @@ import java.util.HashSet;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.Configuration;
 
-import dev._2lstudios.cleanmotd.bukkit.utils.ConfigurationUtil;
+import org.mineblock.motd.bukkit.utils.ConfigurationUtil;
 
 public class Variables {
 	private static final String DEFAULT_MOTD = "CleanMotD default generated MotD\nWhoops... No MotD has been specified!";

@@ -1,16 +1,16 @@
-package dev._2lstudios.cleanmotd.bungee;
+package org.mineblock.motd.bungee;
 
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.api.plugin.PluginManager;
 
-import dev._2lstudios.cleanmotd.bungee.commands.CleanMotDCommand;
-import dev._2lstudios.cleanmotd.bungee.listeners.ProxyPingListener;
-import dev._2lstudios.cleanmotd.bungee.utils.ConfigurationUtil;
-import dev._2lstudios.cleanmotd.bungee.variables.Messages;
-import dev._2lstudios.cleanmotd.bungee.variables.Variables;
+import org.mineblock.motd.bungee.handler.CommandHandler;
+import org.mineblock.motd.bungee.listeners.ProxyPingListener;
+import org.mineblock.motd.bungee.utils.ConfigurationUtil;
+import org.mineblock.motd.bungee.variables.Messages;
+import org.mineblock.motd.bungee.variables.Variables;
 
-public class Main extends Plugin {
+public class BungeePlugin extends Plugin {
 	public void onEnable() {
 		final ConfigurationUtil configurationUtil = new ConfigurationUtil(this);
 
@@ -24,7 +24,7 @@ public class Main extends Plugin {
 
 		pluginManager.registerListener(this,
 				new ProxyPingListener(variables));
-		pluginManager.registerCommand(this, new CleanMotDCommand("cleanmotd", variables, messages));
+		pluginManager.registerCommand(this, new CommandHandler("motd", variables, messages, this));
 
 	}
 }

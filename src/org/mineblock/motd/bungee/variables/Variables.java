@@ -1,9 +1,9 @@
-package dev._2lstudios.cleanmotd.bungee.variables;
+package org.mineblock.motd.bungee.variables;
 
 import java.util.Collection;
 import java.util.HashSet;
 
-import dev._2lstudios.cleanmotd.bungee.utils.ConfigurationUtil;
+import org.mineblock.motd.bungee.utils.ConfigurationUtil;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.config.Configuration;
 
