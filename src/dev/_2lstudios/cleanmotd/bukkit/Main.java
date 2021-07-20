@@ -4,7 +4,7 @@ import org.bukkit.Server;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import dev._2lstudios.cleanmotd.bukkit.commands.CleanMotDCommand;
+import dev._2lstudios.cleanmotd.bukkit.commands.CleanMOTDCommand;
 import dev._2lstudios.cleanmotd.bukkit.listeners.ServerInfoListener;
 import dev._2lstudios.cleanmotd.bukkit.listeners.ServerListPingListener;
 import dev._2lstudios.cleanmotd.bukkit.utils.ConfigurationUtil;
@@ -24,7 +24,7 @@ public class Main extends JavaPlugin {
 		final Messages messages = new Messages(configurationUtil);
 		final PluginManager pluginManager = server.getPluginManager();
 
-		getCommand("cleanmotd").setExecutor(new CleanMotDCommand(variables, messages));
+		getCommand("cleanmotd").setExecutor(new CleanMOTDCommand(variables, messages));
 
 		if (pluginManager.isPluginEnabled("ProtocolLib")) {
 			new ServerInfoListener(this, variables).register();

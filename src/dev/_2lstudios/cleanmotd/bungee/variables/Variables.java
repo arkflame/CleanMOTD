@@ -8,7 +8,7 @@ import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.config.Configuration;
 
 public class Variables {
-	private static final String DEFAULT_MOTD = "CleanMotD default generated MotD\nWhoops... No MotD has been specified!";
+	private static final String DEFAULT_MOTD = "CleanMOTD default generated MOTD\nWhoops... No MOTD has been specified!";
 
 	private final ConfigurationUtil configurationUtil;
 	private final Collection<String> pinged = new HashSet<>();

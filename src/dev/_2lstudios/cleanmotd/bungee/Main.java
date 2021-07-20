@@ -4,7 +4,7 @@ import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.api.plugin.PluginManager;
 
-import dev._2lstudios.cleanmotd.bungee.commands.CleanMotDCommand;
+import dev._2lstudios.cleanmotd.bungee.commands.CleanMOTDCommand;
 import dev._2lstudios.cleanmotd.bungee.listeners.ProxyPingListener;
 import dev._2lstudios.cleanmotd.bungee.utils.ConfigurationUtil;
 import dev._2lstudios.cleanmotd.bungee.variables.Messages;
@@ -24,7 +24,7 @@ public class Main extends Plugin {
 
 		pluginManager.registerListener(this,
 				new ProxyPingListener(variables));
-		pluginManager.registerCommand(this, new CleanMotDCommand("cleanmotd", variables, messages));
+		pluginManager.registerCommand(this, new CleanMOTDCommand("cleanmotd", variables, messages));
 
 	}
 }
