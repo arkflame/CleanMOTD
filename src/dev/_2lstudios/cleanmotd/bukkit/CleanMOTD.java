@@ -11,7 +11,7 @@ import dev._2lstudios.cleanmotd.bukkit.utils.ConfigurationUtil;
 import dev._2lstudios.cleanmotd.bukkit.variables.Messages;
 import dev._2lstudios.cleanmotd.bukkit.variables.Variables;
 
-public class Main extends JavaPlugin {
+public class CleanMOTD extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		final ConfigurationUtil configurationUtil = new ConfigurationUtil(this);

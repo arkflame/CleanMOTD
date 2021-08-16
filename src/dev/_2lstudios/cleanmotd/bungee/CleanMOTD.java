@@ -10,7 +10,7 @@ import dev._2lstudios.cleanmotd.bungee.utils.ConfigurationUtil;
 import dev._2lstudios.cleanmotd.bungee.variables.Messages;
 import dev._2lstudios.cleanmotd.bungee.variables.Variables;
 
-public class Main extends Plugin {
+public class CleanMOTD extends Plugin {
 	public void onEnable() {
 		final ConfigurationUtil configurationUtil = new ConfigurationUtil(this);
 

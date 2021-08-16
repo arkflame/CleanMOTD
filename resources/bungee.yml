@@ -1,5 +1,5 @@
 name: CleanMOTD
 version: 0.2.7
-main: dev._2lstudios.cleanmotd.bungee.Main
+main: dev._2lstudios.cleanmotd.bungee.CleanMOTD
 description: Simple MOTD managing plugin.
 author: 2LS
