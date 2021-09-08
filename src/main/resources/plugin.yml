@@ -1,6 +1,6 @@
 name: MineBlockMotd
-version: 0.2.7
-main: org.mineblock.motd.bukkit.Main
+version: ${project.artifactId}
+main: org.mineblock.motd.bukkit.BukkitPlugin
 description: MineBlock 服务器标语插件
 authors:
   - 2LS

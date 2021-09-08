@@ -1,0 +1,5 @@
+name: MineBlockMotd
+version: ${project.artifactId}
+main: org.mineblock.motd.bungee.Main
+description: MineBlock 服务器标语插件
+authors: [2LS, MineBlock Team.]

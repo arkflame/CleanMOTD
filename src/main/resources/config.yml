@@ -1,0 +1,32 @@
+motd:
+  enabled: true
+  motds:
+    - |-
+        &r        &6&lMine&f&lBlock&r &a纯净生存服务器 &c[1.17.1]
+        &r        &a&l高版本生存社区服务器&r &7| &6&l欢迎新玩家！
+
+# This is the list of message shown when hovering over the player count.
+# Only works on Bukkit (Requires ProtocolLib)
+sample:
+  enabled: false
+  # Placeholders: %onlineplayers% %maxplayers%
+  samples:
+    - |-
+      在线: %onlineplayers%/%maxplayers%
+
+protocol:
+  enabled: false
+  name: "FlameCord 1.7-1.16.5"
+
+maxplayers:
+  enabled: false
+  maxplayers: 1400
+  justonemore: true
+fakeplayers:
+  enabled: false
+  amount: 3
+
+  # "STATIC": 直接添加
+  # "RANDOM": 随机添加
+  # "DIVISION": 添加数=玩家数÷amount
+  mode: "DIVISION"

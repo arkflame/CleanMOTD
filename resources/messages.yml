@@ -1,7 +1,0 @@
-messages:
-  usage: |-
-    &6&lMine&f&lBlock&aMotd&b帮助菜单:
-    &6/motd reload:&r 重新加载配置文件
-  reload: "&a配置文件已经重新加载！"
-  unknowncommand: "&c未知或不完整的命令，请输入 /motd help 查看帮助！"
-  nopermission: "&c你没有足够的权限执行此命令！"
