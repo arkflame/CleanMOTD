@@ -1,5 +1,7 @@
 name: MineBlockMotd
-version: ${project.artifactId}
-main: org.mineblock.motd.bungee.Main
+version: ${project.version}
+main: org.mineblock.motd.bungee.BungeePlugin
 description: MineBlock 服务器标语插件
-authors: [2LS, MineBlock Team.]
+authors:
+  - 2LS
+  - MineBlock Team.

@@ -1,5 +1,5 @@
 name: MineBlockMotd
-version: ${project.artifactId}
+version: ${project.version}
 main: org.mineblock.motd.bukkit.BukkitPlugin
 description: MineBlock 服务器标语插件
 authors:
