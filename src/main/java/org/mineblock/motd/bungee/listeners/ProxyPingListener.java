@@ -1,12 +1,13 @@
 package org.mineblock.motd.bungee.listeners;
 
-import org.mineblock.motd.bungee.variables.Variables;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Cancellable;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
+
+import org.mineblock.motd.bungee.variables.Variables;
 
 import java.util.UUID;
 
@@ -21,9 +22,11 @@ public class ProxyPingListener implements Listener {
 	public void onProxyPing(final ProxyPingEvent event) {
 		final ServerPing response = event.getResponse();
 
-		if (response == null || event instanceof Cancellable && ((Cancellable) event).isCancelled()) {
+		if ((response == null) || (event instanceof Cancellable && ((Cancellable) event).isCancelled())) {
 			return;
 		}
+
+		response.getModinfo().setType("VANILLA");
 
 		final ServerPing.Players players = response.getPlayers();
 		int onlinePlayers = players.getOnline();
@@ -36,7 +39,7 @@ public class ProxyPingListener implements Listener {
 		}
 
 		if (variables.isMaxPlayersEnabled()) {
-			maxPlayers = variables.isMaxPlayersJustOneMore() ? onlinePlayers + 1 : variables.getMaxPlayers();
+			maxPlayers = variables.isMaxPlayersJustOneMore() ? (onlinePlayers + 1) : variables.getMaxPlayers();
 
 			players.setMax(maxPlayers);
 		}

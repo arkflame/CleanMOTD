@@ -2,6 +2,4 @@ name: MineBlockMotd
 version: ${project.version}
 main: org.mineblock.motd.bungee.BungeePlugin
 description: MineBlock 服务器标语插件
-authors:
-  - 2LS
-  - MineBlock Team.
+author: MineBlock Team.
