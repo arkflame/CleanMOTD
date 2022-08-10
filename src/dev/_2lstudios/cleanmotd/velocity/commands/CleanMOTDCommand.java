@@ -1,10 +1,13 @@
 package dev._2lstudios.cleanmotd.velocity.commands;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import com.velocitypowered.api.command.SimpleCommand;
 
 import dev._2lstudios.cleanmotd.velocity.CleanMOTD;
 import dev._2lstudios.cleanmotd.velocity.utils.Components;
-import net.kyori.adventure.text.Component;
 
 public class CleanMOTDCommand implements SimpleCommand {
     private final CleanMOTD plugin;
@@ -29,6 +32,25 @@ public class CleanMOTDCommand implements SimpleCommand {
     @Override
     public boolean hasPermission(Invocation invocation) {
         return invocation.source().hasPermission("cleanmotd.admin");
+    }
+
+    @Override
+    public List<String> suggest(Invocation invocation) {
+        final String[] args = invocation.arguments();
+
+        if(args.length != 1) {
+            return Arrays.asList("help", "reload");
+        }
+
+        if("help".startsWith(args[0])) {
+            return Collections.singletonList("help");
+        }
+
+        if("reload".startsWith(args[0])) {
+            return Collections.singletonList("reload");
+        }
+
+        return Collections.emptyList();
     }
     
 }
