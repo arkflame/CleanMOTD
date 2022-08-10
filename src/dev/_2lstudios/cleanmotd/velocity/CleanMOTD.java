@@ -2,6 +2,9 @@ package dev._2lstudios.cleanmotd.velocity;
 
 import java.io.IOException;
 import java.nio.file.Path;
+
+import org.slf4j.Logger;
+
 import java.nio.file.Files;
 
 import com.google.inject.Inject;
@@ -30,6 +33,7 @@ public final class CleanMOTD {
     private final Path path;
     private final CommandManager commandManager;
     private final EventManager eventManager;
+    private final Logger logger;
     private Variables variables;
     private Messages messages;
 
@@ -37,11 +41,13 @@ public final class CleanMOTD {
     public CleanMOTD(
         @DataDirectory Path path,
         CommandManager commandManager,
-        EventManager eventManager
+        EventManager eventManager,
+        Logger logger
     ) {
         this.path = path;
         this.commandManager = commandManager;
         this.eventManager = eventManager;
+        this.logger = logger;
     }
 
     @Subscribe
@@ -50,10 +56,11 @@ public final class CleanMOTD {
             try {
                 Files.createDirectory(path);
             } catch(IOException e) {
-                e.printStackTrace();
-            }
-            
+                logger.error("Cannot create Plugin directory", e);
+                return;
+            } 
         }
+
         if (!reload()) {
             return;
         }
@@ -79,7 +86,7 @@ public final class CleanMOTD {
         try {
             vars = Variables.loadConfig(path, this);
         } catch (IOException | ObjectMappingException e) {
-            e.printStackTrace();
+            logger.error("Cannot load plugin configuration", e);
             return false;
         }
 
@@ -87,7 +94,7 @@ public final class CleanMOTD {
         try {
             msg = Messages.loadConfig(path, this);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Cannot load plugin messages");
             return false;
         }
 
