@@ -14,14 +14,15 @@ public class CleanMOTDCommand implements SimpleCommand {
 
     @Override
     public void execute(Invocation invocation) {
-        String[] args = invocation.arguments();
-        if (args.length < 1 || args[0].equalsIgnoreCase("help"))
+        final String[] args = invocation.arguments();
+        if (args.length < 1 || args[0].equalsIgnoreCase("help")) {
             invocation.source().sendMessage(Component.text(plugin.getMessages().usage()));
-        else if (args[0].equalsIgnoreCase("reload")) {
+        } else if (args[0].equalsIgnoreCase("reload")) {
             plugin.reload();
             invocation.source().sendMessage(Component.text(plugin.getMessages().reload()));
-        } else
+        } else {
             invocation.source().sendMessage(Component.text(plugin.getMessages().unknownCommand()));
+        } 
     }
 
     @Override

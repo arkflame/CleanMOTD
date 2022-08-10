@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import com.google.inject.Inject;
 import com.velocitypowered.api.command.CommandManager;
 import com.velocitypowered.api.command.CommandMeta;
+import com.velocitypowered.api.event.EventManager;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Plugin;
@@ -13,6 +14,7 @@ import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 
 import dev._2lstudios.cleanmotd.velocity.commands.CleanMOTDCommand;
+import dev._2lstudios.cleanmotd.velocity.listeners.ProxyPingListener;
 import dev._2lstudios.cleanmotd.velocity.variables.Messages;
 import dev._2lstudios.cleanmotd.velocity.variables.Variables;
 import ninja.leaping.configurate.objectmapping.ObjectMappingException;
@@ -25,18 +27,21 @@ import ninja.leaping.configurate.objectmapping.ObjectMappingException;
     authors = ("2LS")
 )
 public final class CleanMOTD {
-    private final ProxyServer proxy;
     private final Path path;
     private final CommandManager commandManager;
+    private final EventManager eventManager;
     private Variables variables;
     private Messages messages;
 
-
     @Inject
-    public CleanMOTD(ProxyServer proxy, @DataDirectory Path path, CommandManager commandManager) {
-        this.proxy = proxy;
+    public CleanMOTD(
+        @DataDirectory Path path,
+        CommandManager commandManager,
+        EventManager eventManager
+    ) {
         this.path = path;
         this.commandManager = commandManager;
+        this.eventManager = eventManager;
     }
 
     @Subscribe
@@ -50,6 +55,7 @@ public final class CleanMOTD {
             .build();
 
         commandManager.register(meta, new CleanMOTDCommand(this));
+        eventManager.register(this, new ProxyPingListener(this));
     }
 
     public Variables getVariables() {

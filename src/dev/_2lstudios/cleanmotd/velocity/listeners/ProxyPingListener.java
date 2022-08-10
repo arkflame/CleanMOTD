@@ -5,6 +5,7 @@ import com.velocitypowered.api.event.proxy.ProxyPingEvent;
 import com.velocitypowered.api.proxy.server.ServerPing;
 
 import dev._2lstudios.cleanmotd.velocity.CleanMOTD;
+import dev._2lstudios.cleanmotd.velocity.variables.Variables;
 
 public class ProxyPingListener {
     private final CleanMOTD plugin;
@@ -14,41 +15,36 @@ public class ProxyPingListener {
     @Subscribe
     public void onPing(ProxyPingEvent event) {
         ServerPing.Builder builder = event.getPing().asBuilder();
+		Variables variables = plugin.getVariables();
+		int onlinePlayers = builder.getOnlinePlayers();
+		int maxPlayers = 0;
 
-        /*final ServerPing.Players players = response.getPlayers();
-		int onlinePlayers = players.getOnline();
-		int maxPlayers = players.getMax();
-
-		if (variables.isFakePlayersEnabled()) {
-			onlinePlayers = onlinePlayers + variables.getFakePlayersAmount(onlinePlayers);
-
-			players.setOnline(onlinePlayers);
+		if (variables.fakePlayers().enabled()) {
+			onlinePlayers = onlinePlayers + variables.fakePlayers().players(onlinePlayers);
+			builder.onlinePlayers(onlinePlayers);
 		}
 
-		if (variables.isMaxPlayersEnabled()) {
-			maxPlayers = variables.isMaxPlayersJustOneMore() ? onlinePlayers + 1 : variables.getMaxPlayers();
-
-			players.setMax(maxPlayers);
+		if (variables.maxPlayers().enabled()) {
+			maxPlayers = variables.maxPlayers().justOneMore()
+				? onlinePlayers + 1
+				: variables.maxPlayers().maxPlayers();
+			builder.maximumPlayers(maxPlayers);
 		}
 
-		if (variables.isMotdEnabled()) {
-			response.setDescriptionComponent(new TextComponent(variables.getMOTD(maxPlayers, onlinePlayers)));
+		if (variables.motd().enabled()) {
+			builder.description(variables.motd().getMOTD(maxPlayers, onlinePlayers));
 		}
 
-		if (variables.isProtocolEnabled()) {
-			response.getVersion().setName(variables.getProtocolName());
+		if (variables.protocol().enabled()) {
+			builder.version(
+				new ServerPing.Version(
+					builder.getVersion().getProtocol(),
+					variables.protocol().name())
+				);
 		}
 
-		if (variables.isSampleEnabled()) {
-			final UUID fakeUuid = new UUID(0, 0);
-			final String[] sampleString = variables.getSample(maxPlayers, onlinePlayers);
-			final ServerPing.PlayerInfo[] sample = new ServerPing.PlayerInfo[sampleString.length];
-
-			for (int i = 0; i < sampleString.length; i++) {
-				sample[i] = new ServerPing.PlayerInfo(sampleString[i], fakeUuid);
-			}
-
-			players.setSample(sample);
-		}*/
+		if (variables.sample().enabled()) {
+			builder.samplePlayers(variables.sample().getSample(maxPlayers, onlinePlayers));
+		}
     }
 }
