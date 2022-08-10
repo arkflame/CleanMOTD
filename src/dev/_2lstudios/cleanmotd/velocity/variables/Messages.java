@@ -17,7 +17,7 @@ public interface Messages {
     public static Messages loadConfig(Path path, CleanMOTD plugin) throws IOException {
         path = path.resolve("messages.yml");
         if (Files.notExists(path)) {
-            try (InputStream in = plugin.getClass().getResourceAsStream("messages.yml")) {
+            try (InputStream in = plugin.getClass().getClassLoader().getResourceAsStream("messages.yml")) {
                 Files.copy(in, path);
             }
         }

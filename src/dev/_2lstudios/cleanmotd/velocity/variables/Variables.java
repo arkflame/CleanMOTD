@@ -41,7 +41,7 @@ public class Variables {
     public static Variables loadConfig(Path path, CleanMOTD plugin) throws IOException, ObjectMappingException {
         path = path.resolve("config.yml");
         if (Files.notExists(path)) {
-            try (InputStream in = plugin.getClass().getResourceAsStream("config.yml")) {
+            try (InputStream in = plugin.getClass().getClassLoader().getResourceAsStream("config.yml")) {
                 Files.copy(in, path);
             }
         }

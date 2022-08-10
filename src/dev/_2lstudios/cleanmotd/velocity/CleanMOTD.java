@@ -2,6 +2,7 @@ package dev._2lstudios.cleanmotd.velocity;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Files;
 
 import com.google.inject.Inject;
 import com.velocitypowered.api.command.CommandManager;
@@ -11,7 +12,6 @@ import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
-import com.velocitypowered.api.proxy.ProxyServer;
 
 import dev._2lstudios.cleanmotd.velocity.commands.CleanMOTDCommand;
 import dev._2lstudios.cleanmotd.velocity.listeners.ProxyPingListener;
@@ -46,6 +46,14 @@ public final class CleanMOTD {
 
     @Subscribe
     public void onProxyInitialization(ProxyInitializeEvent event) {
+        if (Files.notExists(path)) {
+            try {
+                Files.createDirectory(path);
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+            
+        }
         if (!reload()) {
             return;
         }

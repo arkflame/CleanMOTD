@@ -3,6 +3,7 @@ package dev._2lstudios.cleanmotd.velocity.commands;
 import com.velocitypowered.api.command.SimpleCommand;
 
 import dev._2lstudios.cleanmotd.velocity.CleanMOTD;
+import dev._2lstudios.cleanmotd.velocity.utils.Components;
 import net.kyori.adventure.text.Component;
 
 public class CleanMOTDCommand implements SimpleCommand {
@@ -16,12 +17,12 @@ public class CleanMOTDCommand implements SimpleCommand {
     public void execute(Invocation invocation) {
         final String[] args = invocation.arguments();
         if (args.length < 1 || args[0].equalsIgnoreCase("help")) {
-            invocation.source().sendMessage(Component.text(plugin.getMessages().usage()));
+            invocation.source().sendMessage(Components.SERIALIZER.deserialize(plugin.getMessages().usage()));
         } else if (args[0].equalsIgnoreCase("reload")) {
             plugin.reload();
-            invocation.source().sendMessage(Component.text(plugin.getMessages().reload()));
+            invocation.source().sendMessage(Components.SERIALIZER.deserialize(plugin.getMessages().reload()));
         } else {
-            invocation.source().sendMessage(Component.text(plugin.getMessages().unknownCommand()));
+            invocation.source().sendMessage(Components.SERIALIZER.deserialize(plugin.getMessages().unknownCommand()));
         } 
     }
 
