@@ -148,6 +148,7 @@ public class Variables {
             return this.enabled;
         }
 
+        @Setting
         private String name;
         public String name() {
             return this.name;
