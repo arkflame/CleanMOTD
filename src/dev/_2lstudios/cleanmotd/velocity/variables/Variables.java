@@ -46,11 +46,11 @@ public class Variables {
             }
         }
 
-        YAMLConfigurationLoader loader = YAMLConfigurationLoader.builder()
+        final YAMLConfigurationLoader loader = YAMLConfigurationLoader.builder()
             .setPath(path)
             .build();
 
-        ConfigurationNode node = loader.load();
+        final ConfigurationNode node = loader.load();
         return Variables.loadFrom(node);
     }
 
@@ -90,12 +90,12 @@ public class Variables {
 
         @Setting
         private List<String> motds;
-        public List<String> motds() {
-            return this.motds;
-        }
 
-        private static final Component DEFAULT_MOTD = Component.text("CleanMOTD default generated MOTD")
-            .append(Component.newline()).append(Component.text("Whoops... No MOTD has been specified!"));
+        private static final Component DEFAULT_MOTD = Component.text()
+            .append(Component.text("CleanMOTD default generated MOTD"))
+            .append(Component.newline())
+            .append(Component.text("Whoops... No MOTD has been specified!"))
+            .build();
 
         public Component getMOTD(final int maxPlayers, final int onlinePlayers) {
             if (motds.isEmpty()) {
@@ -122,9 +122,6 @@ public class Variables {
 
         @Setting
         private List<String> samples;
-        public List<String> samples() {
-            return this.samples;
-        }
 
         private final UUID uuid = UUID.randomUUID();
         public ServerPing.SamplePlayer[] getSample(final int maxPlayers, final int onlinePlayers) {
@@ -188,15 +185,9 @@ public class Variables {
 
         @Setting
         private int amount;
-        public int amount() {
-            return this.amount;
-        }
 
         @Setting
         private Mode mode;
-        public Mode mode() {
-            return this.mode;
-        }
 
         public int players(int amount) {
             switch (mode) {

@@ -7,15 +7,16 @@ import com.velocitypowered.api.proxy.server.ServerPing;
 import dev._2lstudios.cleanmotd.velocity.CleanMOTD;
 import dev._2lstudios.cleanmotd.velocity.variables.Variables;
 
-public class ProxyPingListener {
+public final class ProxyPingListener {
     private final CleanMOTD plugin;
     public ProxyPingListener(CleanMOTD plugin) {
         this.plugin = plugin;
     }
+
     @Subscribe
     public void onPing(ProxyPingEvent event) {
-        ServerPing.Builder builder = event.getPing().asBuilder();
-		Variables variables = plugin.getVariables();
+        final ServerPing.Builder builder = event.getPing().asBuilder();
+		final Variables variables = plugin.getVariables();
 		int onlinePlayers = builder.getOnlinePlayers();
 		int maxPlayers = 0;
 
@@ -46,5 +47,7 @@ public class ProxyPingListener {
 		if (variables.sample().enabled()) {
 			builder.samplePlayers(variables.sample().getSample(maxPlayers, onlinePlayers));
 		}
+
+		event.setPing(builder.build());
     }
 }

@@ -9,7 +9,7 @@ import com.velocitypowered.api.command.SimpleCommand;
 import dev._2lstudios.cleanmotd.velocity.CleanMOTD;
 import dev._2lstudios.cleanmotd.velocity.utils.Components;
 
-public class CleanMOTDCommand implements SimpleCommand {
+public final class CleanMOTDCommand implements SimpleCommand {
     private final CleanMOTD plugin;
 
     public CleanMOTDCommand(CleanMOTD plugin) {
@@ -38,15 +38,15 @@ public class CleanMOTDCommand implements SimpleCommand {
     public List<String> suggest(Invocation invocation) {
         final String[] args = invocation.arguments();
 
-        if(args.length != 1) {
+        if (args.length != 1) {
             return Arrays.asList("help", "reload");
         }
 
-        if("help".startsWith(args[0])) {
+        if ("help".startsWith(args[0])) {
             return Collections.singletonList("help");
         }
 
-        if("reload".startsWith(args[0])) {
+        if ("reload".startsWith(args[0])) {
             return Collections.singletonList("reload");
         }
 

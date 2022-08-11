@@ -22,15 +22,15 @@ public interface Messages {
             }
         }
 
-        YAMLConfigurationLoader loader = YAMLConfigurationLoader.builder()
+        final YAMLConfigurationLoader loader = YAMLConfigurationLoader.builder()
             .setPath(path)
             .build();
 
         // why linsa? messages.getString("messages.usage")? algo... redundante xd
-        ConfigurationNode node = loader.load().getNode("messages");
-        String usage = node.getNode("usage").getString();
-        String reload = node.getNode("reload").getString();
-        String unknownCommand = node.getNode("unknowncommand").getString();
+        final ConfigurationNode node = loader.load().getNode("messages");
+        final String usage = node.getNode("usage").getString();
+        final String reload = node.getNode("reload").getString();
+        final String unknownCommand = node.getNode("unknowncommand").getString();
 
         return new Messages() {
             @Override

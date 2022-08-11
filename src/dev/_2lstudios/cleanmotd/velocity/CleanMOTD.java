@@ -65,7 +65,7 @@ public final class CleanMOTD {
             return;
         }
 
-        CommandMeta meta = commandManager.metaBuilder("cleanmotd")
+        final CommandMeta meta = commandManager.metaBuilder("cleanmotd")
             .plugin(this)
             .build();
 
