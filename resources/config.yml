@@ -12,7 +12,7 @@ motd:
         &d&lCome and enjoy our brand new games!
 
 # This is the list of message shown when hovering over the player count.
-# Only works on Bukkit (Requires ProtocolLib)
+# Only works on Bukkit (Requires ProtocolLib) and Velocity
 sample:
   enabled: true
 
