@@ -1,0 +1,13 @@
+
+name: ${name}
+description: ${description}
+author: ${author}
+version: ${version}
+url: ${url}
+main: dev._2lstudios.cleanmotd.bukkit.CleanMOTD
+api: 1.13
+api-version: 1.13
+softdepend: [ProtocolLib]
+commands:
+  cleanmotd:
+    description: The main CleanMOTD command.
