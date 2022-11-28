@@ -1,8 +1,8 @@
 messages:
   usage: |-
-    &aCleanMOTD commands:
+    &aCleanMOTD ${version} by ${author} commands:
     &e/cleanmotd reload &7- &bReloads the plugin!
 
-  reload: "&aPlugin CleanMOTD reloaded!"
-  unknowncommand: "&cUnknown command. Use /cleanmotd help to see available commands!"
-  nopermission: "&cYou dont have permission to use this command!"
+  reload: "&aYou have reloaded CleanMOTD ${version} by ${author}!"
+  unknowncommand: "&cUnknown command. Use "/cleanmotd help" to see available commands!"
+  nopermission: "&cThis server is running CleanMOTD ${version} by ${author}."

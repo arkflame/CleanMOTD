@@ -72,19 +72,6 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
-                <includes>
-                    <include>plugin.yml</include>
-                    <include>bungee.yml</include>
-                    <include>pom.properties</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <excludes>
-                    <exclude>plugin.yml</exclude>
-                    <exclude>bungee.yml</exclude>
-                    <exclude>pom.properties</exclude>
-                </excludes>
             </resource>
         </resources>
 
