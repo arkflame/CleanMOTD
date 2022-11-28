@@ -4,5 +4,5 @@ messages:
     &e/cleanmotd reload &7- &bReloads the plugin!
 
   reload: "&aYou have reloaded CleanMOTD ${version} by ${author}!"
-  unknowncommand: "&cUnknown command. Use "/cleanmotd help" to see available commands!"
+  unknowncommand: "&cUnknown command. Use '/cleanmotd help' to see available commands!"
   nopermission: "&cThis server is running CleanMOTD ${version} by ${author}."

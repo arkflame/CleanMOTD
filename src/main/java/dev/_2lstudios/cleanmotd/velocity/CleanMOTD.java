@@ -86,6 +86,7 @@ public final class CleanMOTD {
         try {
             vars = VelocityVariables.loadConfig(path, this);
         } catch (IOException | ObjectMappingException e) {
+            e.printStackTrace();
             logger.error("Cannot load plugin configuration", e);
             return false;
         }
@@ -94,6 +95,7 @@ public final class CleanMOTD {
         try {
             msg = Messages.loadConfig(path, this);
         } catch (IOException e) {
+            e.printStackTrace();
             logger.error("Cannot load plugin messages");
             return false;
         }
