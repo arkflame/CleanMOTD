@@ -4,3 +4,8 @@
 .factorypath
 .classpath
 /target
+
+.gradle/
+/.idea/
+build/
+bin/
