@@ -8,8 +8,8 @@ import dev._2lstudios.cleanmotd.bukkit.commands.CleanMOTDCommand;
 import dev._2lstudios.cleanmotd.bukkit.listeners.ServerInfoListener;
 import dev._2lstudios.cleanmotd.bukkit.listeners.ServerListPingListener;
 import dev._2lstudios.cleanmotd.bukkit.utils.ConfigurationUtil;
+import dev._2lstudios.cleanmotd.bukkit.variables.BukkitVariables;
 import dev._2lstudios.cleanmotd.bukkit.variables.Messages;
-import dev._2lstudios.cleanmotd.bukkit.variables.Variables;
 
 public class CleanMOTD extends JavaPlugin {
 	@Override
@@ -20,7 +20,7 @@ public class CleanMOTD extends JavaPlugin {
 		configurationUtil.createConfiguration("%datafolder%/messages.yml");
 
 		final Server server = getServer();
-		final Variables variables = new Variables(configurationUtil);
+		final BukkitVariables variables = new BukkitVariables(configurationUtil);
 		final Messages messages = new Messages(configurationUtil);
 		final PluginManager pluginManager = server.getPluginManager();
 

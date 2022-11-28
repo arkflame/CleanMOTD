@@ -19,7 +19,7 @@ import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import dev._2lstudios.cleanmotd.velocity.commands.CleanMOTDCommand;
 import dev._2lstudios.cleanmotd.velocity.listeners.ProxyPingListener;
 import dev._2lstudios.cleanmotd.velocity.variables.Messages;
-import dev._2lstudios.cleanmotd.velocity.variables.Variables;
+import dev._2lstudios.cleanmotd.velocity.variables.VelocityVariables;
 import ninja.leaping.configurate.objectmapping.ObjectMappingException;
 
 @Plugin(
@@ -34,7 +34,7 @@ public final class CleanMOTD {
     private final CommandManager commandManager;
     private final EventManager eventManager;
     private final Logger logger;
-    private Variables variables;
+    private VelocityVariables variables;
     private Messages messages;
 
     @Inject
@@ -52,15 +52,6 @@ public final class CleanMOTD {
 
     @Subscribe
     public void onProxyInitialization(ProxyInitializeEvent event) {
-        if (Files.notExists(path)) {
-            try {
-                Files.createDirectory(path);
-            } catch(IOException e) {
-                logger.error("Cannot create Plugin directory", e);
-                return;
-            } 
-        }
-
         if (!reload()) {
             return;
         }
@@ -73,7 +64,7 @@ public final class CleanMOTD {
         eventManager.register(this, new ProxyPingListener(this));
     }
 
-    public Variables getVariables() {
+    public VelocityVariables getVariables() {
         return variables;
     }
 
@@ -82,9 +73,18 @@ public final class CleanMOTD {
     }
     
     public boolean reload() {
-        Variables vars;
+        if (Files.notExists(path)) {
+            try {
+                Files.createDirectory(path);
+            } catch(IOException e) {
+                logger.error("Cannot create Plugin directory", e);
+                return false;
+            } 
+        }
+
+        VelocityVariables vars;
         try {
-            vars = Variables.loadConfig(path, this);
+            vars = VelocityVariables.loadConfig(path, this);
         } catch (IOException | ObjectMappingException e) {
             logger.error("Cannot load plugin configuration", e);
             return false;

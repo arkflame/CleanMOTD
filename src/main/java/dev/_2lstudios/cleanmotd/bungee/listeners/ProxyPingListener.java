@@ -1,6 +1,6 @@
 package dev._2lstudios.cleanmotd.bungee.listeners;
 
-import dev._2lstudios.cleanmotd.bungee.variables.Variables;
+import dev._2lstudios.cleanmotd.bungee.variables.BungeeVariables;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.event.ProxyPingEvent;
@@ -11,9 +11,9 @@ import net.md_5.bungee.event.EventHandler;
 import java.util.UUID;
 
 public class ProxyPingListener implements Listener {
-	private final Variables variables;
+	private final BungeeVariables variables;
 
-	public ProxyPingListener(final Variables variables) {
+	public ProxyPingListener(final BungeeVariables variables) {
 		this.variables = variables;
 	}
 

@@ -5,7 +5,7 @@ import com.velocitypowered.api.event.proxy.ProxyPingEvent;
 import com.velocitypowered.api.proxy.server.ServerPing;
 
 import dev._2lstudios.cleanmotd.velocity.CleanMOTD;
-import dev._2lstudios.cleanmotd.velocity.variables.Variables;
+import dev._2lstudios.cleanmotd.velocity.variables.VelocityVariables;
 
 public final class ProxyPingListener {
     private final CleanMOTD plugin;
@@ -16,7 +16,7 @@ public final class ProxyPingListener {
     @Subscribe
     public void onPing(ProxyPingEvent event) {
         final ServerPing.Builder builder = event.getPing().asBuilder();
-		final Variables variables = plugin.getVariables();
+		final VelocityVariables variables = plugin.getVariables();
 		int onlinePlayers = builder.getOnlinePlayers();
 		int maxPlayers = 0;
 

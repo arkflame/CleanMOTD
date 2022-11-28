@@ -22,23 +22,23 @@ import ninja.leaping.configurate.objectmapping.ObjectMapper;
 import ninja.leaping.configurate.objectmapping.ObjectMappingException;
 
 @ConfigSerializable
-public class Variables {
-    private static final ObjectMapper<Variables> MAPPER;
+public class VelocityVariables {
+    private static final ObjectMapper<VelocityVariables> MAPPER;
     private static final Random rm = new Random();
 
     static {
         try {
-            MAPPER = ObjectMapper.forClass(Variables.class);
+            MAPPER = ObjectMapper.forClass(VelocityVariables.class);
         } catch (ObjectMappingException e) {
             throw new ExceptionInInitializerError(e);
         }
     }
 
-    private static Variables loadFrom(ConfigurationNode node) throws ObjectMappingException {
+    private static VelocityVariables loadFrom(ConfigurationNode node) throws ObjectMappingException {
         return MAPPER.bindToNew().populate(node);
     }
 
-    public static Variables loadConfig(Path path, CleanMOTD plugin) throws IOException, ObjectMappingException {
+    public static VelocityVariables loadConfig(Path path, CleanMOTD plugin) throws IOException, ObjectMappingException {
         path = path.resolve("config.yml");
         if (Files.notExists(path)) {
             try (InputStream in = plugin.getClass().getClassLoader().getResourceAsStream("config.yml")) {
@@ -51,7 +51,7 @@ public class Variables {
             .build();
 
         final ConfigurationNode node = loader.load();
-        return Variables.loadFrom(node);
+        return VelocityVariables.loadFrom(node);
     }
 
     @Setting

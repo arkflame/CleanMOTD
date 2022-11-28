@@ -5,13 +5,13 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import dev._2lstudios.cleanmotd.bukkit.variables.Messages;
-import dev._2lstudios.cleanmotd.bukkit.variables.Variables;
+import dev._2lstudios.cleanmotd.bukkit.variables.BukkitVariables;
 
 public class CleanMOTDCommand implements CommandExecutor {
-	private final Variables variables;
+	private final BukkitVariables variables;
 	private final Messages messages;
 
-	public CleanMOTDCommand(final Variables variables, final Messages messages) {
+	public CleanMOTDCommand(final BukkitVariables variables, final Messages messages) {
 		this.variables = variables;
 		this.messages = messages;
 	}

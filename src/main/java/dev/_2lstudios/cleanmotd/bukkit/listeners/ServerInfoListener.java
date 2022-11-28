@@ -16,12 +16,12 @@ import com.comphenix.protocol.wrappers.WrappedServerPing;
 
 import org.bukkit.plugin.Plugin;
 
-import dev._2lstudios.cleanmotd.bukkit.variables.Variables;
+import dev._2lstudios.cleanmotd.bukkit.variables.BukkitVariables;
 
 public class ServerInfoListener extends PacketAdapter {
-    private final Variables variables;
+    private final BukkitVariables variables;
 
-    public ServerInfoListener(final Plugin plugin, final Variables variables) {
+    public ServerInfoListener(final Plugin plugin, final BukkitVariables variables) {
         super(plugin, ListenerPriority.HIGH, Arrays.asList(PacketType.Status.Server.OUT_SERVER_INFO),
                 ListenerOptions.ASYNC);
         this.variables = variables;

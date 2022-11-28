@@ -7,8 +7,8 @@ import net.md_5.bungee.api.plugin.PluginManager;
 import dev._2lstudios.cleanmotd.bungee.commands.CleanMOTDCommand;
 import dev._2lstudios.cleanmotd.bungee.listeners.ProxyPingListener;
 import dev._2lstudios.cleanmotd.bungee.utils.ConfigurationUtil;
+import dev._2lstudios.cleanmotd.bungee.variables.BungeeVariables;
 import dev._2lstudios.cleanmotd.bungee.variables.Messages;
-import dev._2lstudios.cleanmotd.bungee.variables.Variables;
 
 public class CleanMOTD extends Plugin {
 	public void onEnable() {
@@ -18,13 +18,12 @@ public class CleanMOTD extends Plugin {
 		configurationUtil.createConfiguration("%datafolder%/messages.yml");
 
 		final ProxyServer proxy = getProxy();
-		final Variables variables = new Variables(configurationUtil);
+		final BungeeVariables variables = new BungeeVariables(configurationUtil);
 		final Messages messages = new Messages(configurationUtil);
 		final PluginManager pluginManager = proxy.getPluginManager();
 
 		pluginManager.registerListener(this,
 				new ProxyPingListener(variables));
 		pluginManager.registerCommand(this, new CleanMOTDCommand("cleanmotd", variables, messages));
-
 	}
 }

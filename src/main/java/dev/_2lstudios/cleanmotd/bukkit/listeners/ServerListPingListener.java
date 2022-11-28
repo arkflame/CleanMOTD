@@ -5,12 +5,12 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerListPingEvent;
 
-import dev._2lstudios.cleanmotd.bukkit.variables.Variables;
+import dev._2lstudios.cleanmotd.bukkit.variables.BukkitVariables;
 
 public class ServerListPingListener implements Listener {
-	private final Variables variables;
+	private final BukkitVariables variables;
 
-	public ServerListPingListener(final Variables variables) {
+	public ServerListPingListener(final BukkitVariables variables) {
 		this.variables = variables;
 	}
 

@@ -1,16 +1,16 @@
 package dev._2lstudios.cleanmotd.bungee.commands;
 
 import dev._2lstudios.cleanmotd.bungee.variables.Messages;
-import dev._2lstudios.cleanmotd.bungee.variables.Variables;
+import dev._2lstudios.cleanmotd.bungee.variables.BungeeVariables;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.plugin.Command;
 
 public class CleanMOTDCommand extends Command {
-	private final Variables variables;
+	private final BungeeVariables variables;
 	private final Messages messages;
 
-	public CleanMOTDCommand(final String string, final Variables variables, final Messages messages) {
+	public CleanMOTDCommand(final String string, final BungeeVariables variables, final Messages messages) {
 		super(string);
 		this.variables = variables;
 		this.messages = messages;
