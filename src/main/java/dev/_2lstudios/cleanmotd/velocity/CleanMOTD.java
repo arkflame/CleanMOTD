@@ -25,7 +25,7 @@ import ninja.leaping.configurate.objectmapping.ObjectMappingException;
 @Plugin(
     id = "cleanmotd",
     name = "CleanMOTD",
-    version = "0.2.7",
+    version = "0.2.8",
     description = "Simple MOTD customization plugin.",
     authors = ("2LS")
 )

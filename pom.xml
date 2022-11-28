@@ -7,7 +7,7 @@
 
     <name>CleanMOTD</name>
     <description>Simple MOTD customization plugin.</description>
-    <version>0.2.7</version>
+    <version>0.2.8</version>
     <url>https://www.spigotmc.org/resources/58268/</url>
 
     <properties>
